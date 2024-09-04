@@ -44,4 +44,9 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function vods()
+    {
+        return $this->hasMany(Vod::class);
+    }
 }
