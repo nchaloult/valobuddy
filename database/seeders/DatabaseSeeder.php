@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Strat;
 use App\Models\User;
 use App\Models\Vod;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -16,6 +17,7 @@ class DatabaseSeeder extends Seeder
     {
         User::factory()
             ->has(Vod::factory(3))
+            ->has(Strat::factory(3))
             ->create([
                 'name' => 'Todd Howard',
                 'email' => 'todd@bethesda.net',
