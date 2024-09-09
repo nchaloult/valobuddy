@@ -17,7 +17,7 @@ class DatabaseSeeder extends Seeder
     {
         User::factory()
             ->has(Vod::factory(3))
-            ->has(Strat::factory(3))
+            ->has(Strat::factory(10))
             ->create([
                 'name' => 'Todd Howard',
                 'email' => 'todd@bethesda.net',

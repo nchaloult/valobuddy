@@ -4,15 +4,23 @@ namespace App\Http\Controllers;
 
 use App\Models\Strat;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
+use Inertia\Response;
 
 class StratController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request): Response
     {
-        //
+        $strats = $request->user()
+            ->strats()
+            ->select(['id', 'title', 'num_images', 'created_at', 'updated_at'])
+            ->orderBy('updated_at', 'desc')
+            ->get();
+
+        return Inertia::render('Strats', ['strats' => $strats]);
     }
 
     /**
