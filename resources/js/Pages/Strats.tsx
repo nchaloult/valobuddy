@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import CreateActionButton from '@/Components/CreateActionButton';
 
 export default function Strats({ strats }) {
   const [filteredStrats, setFilteredStrats] = useState(strats);
@@ -12,7 +13,9 @@ export default function Strats({ strats }) {
 
   return (
     <>
-      <header className="flex flex-col space-y-2 z-10 sticky top-0 p-4 w-full bg-neutral-900 bg-opacity-[96%] shadow-lg shadow-neutral-200/5">
+      <CreateActionButton />
+
+      <header className="flex flex-col space-y-2 z-10 sticky top-0 p-4 w-full bg-neutral-900/95 shadow-lg shadow-neutral-200/5">
         <span className="text-neutral-400 text-sm font-['Space_Mono'] scale-y-110 uppercase">TODO: Breadcrumbs go here.</span>
         <h1 className="text-5xl font-['Druk_Wide_Bold']">STRATS</h1>
         <form className="flex space-x-2 [&>*]:text-sm font-['Space_Mono']">
