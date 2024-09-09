@@ -21,3 +21,5 @@ yarn-error.log
 /.vscode
 
 /database/postgres-data
+
+/storage/debugbar
