@@ -1,3 +1,5 @@
+import { CloseIcon } from "@/Components/SVGs";
+
 // TODO: Type props.
 export default function DeleteConfirmationModal({ stratId, stratTitle, handleCancel }) {
   return (
@@ -24,18 +26,26 @@ export default function DeleteConfirmationModal({ stratId, stratTitle, handleCan
 
           <div className="p-4 w-2/3 lg:w-1/2 bg-neutral-800 border border-white/10 shadow-lg shadow-neutral-200/5">
 
-            {/* "Hazard tape" graphic. */}
-            <div className="mb-2 h-4 overflow-hidden">
-              <div
-                className="w-svw"
-                style={{
-                  backgroundImage: "repeating-linear-gradient(-45deg, rgba(0,0,0,0), rgba(0,0,0,0) 0.5rem, #404040 0.5rem, #404040 1rem )",
-                  // TODO: Only apply this animation if prefers-reduce-motion is false.
-                  animation: "hazard-tape-marquee-ltor 1s linear infinite",
-                }}
-              >
-                &nbsp;
+            <div className="flex space-x-2 mb-4">
+              {/* "Hazard tape" graphic. */}
+              <div className="overflow-hidden">
+                <div
+                  className="w-svw h-full"
+                  style={{
+                    backgroundImage: "repeating-linear-gradient(-45deg, rgba(0,0,0,0), rgba(0,0,0,0) 0.5rem, #404040 0.5rem, #404040 1rem )",
+                    // TODO: Only apply this animation if prefers-reduce-motion is false.
+                    animation: "hazard-tape-marquee-ltor 1s linear infinite",
+                  }}
+                >
+                  &nbsp;
+                </div>
               </div>
+
+              <button
+                onClick={() => handleCancel()}
+                className="p-1 text-sm font-['Space_Mono'] border-2 border-neutral-700 bg-gradient-to-r from-neutral-700 to-neutral-900 from-50% to-50% bg-right-bottom bg-[length:201%_100%] outline-none hover:bg-left-bottom hover:border-neutral-500 focus:bg-bottom focus:border-neutral-500 transition-all duration-200">
+                <CloseIcon />
+              </button>
             </div>
 
             {/* TODO: What tag should we use for this? */}
