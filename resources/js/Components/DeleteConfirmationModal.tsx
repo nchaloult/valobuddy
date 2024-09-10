@@ -21,7 +21,8 @@ export default function DeleteConfirmationModal({ stratId, stratTitle }) {
 
       <div className="fixed inset-0 z-50 w-screen overflow-y-auto">
         <div className="flex items-center justify-center min-h-full">
-          <div className="p-4 w-2/3 lg:w-1/2 bg-neutral-800">
+
+          <div className="p-4 w-2/3 lg:w-1/2 bg-neutral-800 border border-white/10 shadow-lg shadow-neutral-200/5">
 
             {/* "Hazard tape" graphic. */}
             <div className="mb-2 h-4 overflow-hidden">
@@ -40,6 +41,7 @@ export default function DeleteConfirmationModal({ stratId, stratTitle }) {
             <h4 className="text-3xl font-['Druk_Wide_Bold']">DELETE STRAT</h4>
             <p>Are you sure you want to delete this strat?</p>
           </div>
+
         </div>
       </div>
     </div>
