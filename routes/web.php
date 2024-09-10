@@ -22,6 +22,7 @@ Route::middleware('auth')->group(function () {
     // TODO: Do the slug thing.
     // https://laracasts.com/series/build-a-forum-with-laravel/episodes/27
     Route::get('/{map}/{agent}/strats/{id}', [StratController::class, 'show'])->name('strats.show');
+    Route::get('/{map}/{agent}/strats/{id}/edit', [StratController::class, 'edit'])->name('strats.edit');
 });
 
 require __DIR__ . '/auth.php';

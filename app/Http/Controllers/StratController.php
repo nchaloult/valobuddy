@@ -63,9 +63,17 @@ class StratController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Strat $strat)
+    public function edit(Request $request, string $map, string $agent, string $id)
     {
-        //
+        // TODO: Do we really have to fetch the strat from the database again?
+        // That kinda sucks....
+
+        $strat = $request->user()
+            ->strats()
+            ->where('id', $id)
+            ->sole();
+
+        return Inertia::render('EditStrat', ['strat' => $strat]);
     }
 
     /**
