@@ -1,11 +1,12 @@
 // TODO: Type props.
 export default function DeleteConfirmationModal({ stratId, stratTitle }) {
   return (
-    <div className="relative z-50">
+    <div className="relative z-50" style={{ animation: "fadeIn 2s" }}>
       {/* Background overlay */}
       {/* <div className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm transition-opacity"></div> */}
-      <div className="fixed inset-0 bg-gradient-to-b from-red-500 to-transparent from-[-40%] to-60% backdrop-blur-sm"></div>
-      <svg xmlns="http://www.w3.org/2000/svg" className="fixed z-10 w-svw h-svh opacity-10" style={{ animation: "fadeInLight 0.2s" }}>
+      <div className="fixed inset-0 bg-gradient-to-b from-red-500 to-transparent from-[-40%] to-60%"></div>
+
+      <svg xmlns="http://www.w3.org/2000/svg" className="fixed z-10 w-svw h-svh opacity-10">
         <defs>
           <pattern id="plusPattern" x="0" y="0" width={80} height={80} patternUnits="userSpaceOnUse">
             <path
@@ -18,8 +19,7 @@ export default function DeleteConfirmationModal({ stratId, stratTitle }) {
         <rect width="100%" height="100%" fill="url(#plusPattern)" />
       </svg>
 
-      <div className="fixed inset-0 z-50 w-screen overflow-y-auto" style={{ animation: "fadeIn 0.2s" }}>
-
+      <div className="fixed inset-0 z-50 w-screen overflow-y-auto">
         <div className="flex items-center justify-center min-h-full">
           <div className="p-4 w-2/3 lg:w-1/2 bg-neutral-800">
             {/* "Hazard tape" graphic. */}
