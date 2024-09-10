@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import CreateActionButton from '@/Components/CreateActionButton';
 
+// TODO: Type props.
 export default function Strats({ strats }) {
   const [filteredStrats, setFilteredStrats] = useState(strats);
 

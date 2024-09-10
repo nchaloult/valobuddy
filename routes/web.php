@@ -18,7 +18,10 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    Route::get('strats', [StratController::class, 'index'])->name('strats.index');
+    Route::get('/{map}/{agent}/strats', [StratController::class, 'index'])->name('strats.index');
+    // TODO: Do the slug thing.
+    // https://laracasts.com/series/build-a-forum-with-laravel/episodes/27
+    Route::get('/{map}/{agent}/strats/{id}', [StratController::class, 'show'])->name('strats.show');
 });
 
 require __DIR__ . '/auth.php';
