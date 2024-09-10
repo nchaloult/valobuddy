@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from '@inertiajs/react';
 import CreateActionButton from '@/Components/CreateActionButton';
 
 // TODO: Type props.
@@ -31,12 +32,16 @@ export default function Strats({ strats }) {
           <button type="submit" className="px-5 py-3 text-white border-2 border-neutral-700 bg-gradient-to-r from-red-600 to-neutral-900 from-50% to-50% bg-right-bottom bg-[length:201%_100%] outline-none hover:bg-left-bottom hover:text-neutral-900 hover:border-red-500 focus:bg-left-bottom focus:text-neutral-900 focus:border-red-500 transition-all duration-200 ease-in-out">SEARCH</button>
         </form>
       </header>
-      <main>
+
+      <main className="flex flex-col px-16 py-4">
         {filteredStrats.map((strat) => (
-          <div className="p-4 bg-neutral-800 text-white hover:bg-stone-700">
+          <Link
+            href={ route('strats.show', { map: "foo", agent: "bar", id: strat.id }) }
+            className="p-4 bg-neutral-800 text-white hover:bg-stone-700"
+          >
             <h2>{strat.title}</h2>
             <h3>{strat.updated_at}</h3>
-          </div>
+          </Link>
         ))}
       </main>
     </>
