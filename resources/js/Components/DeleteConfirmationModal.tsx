@@ -30,6 +30,7 @@ export default function DeleteConfirmationModal({ stratId, stratTitle }) {
                 className="w-svw"
                 style={{
                   backgroundImage: "repeating-linear-gradient(-45deg, rgba(0,0,0,0), rgba(0,0,0,0) 0.5rem, #404040 0.5rem, #404040 1rem )",
+                  // TODO: Only apply this animation if prefers-reduce-motion is false.
                   animation: "hazard-tape-marquee-ltor 1s linear infinite",
                 }}
               >
