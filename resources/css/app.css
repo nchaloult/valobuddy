@@ -2,7 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
-@keyframes fadeIn {
+@keyframes fade-in {
   from { opacity: 0; }
   to { opacity: 1; }
+}
+
+@keyframes blur-in {
+  /* Identical to Tailwind's backdrop-blur-sm class. */
+  /* https://tailwindcss.com/docs/backdrop-blur */
+  from { backdrop-filter: blur(0px); }
+  to { backdrop-filter: blur(4px); }
+}
+
+@keyframes hazard-tape-marquee-ltor {
+  from { transform: translateX(-1.5rem); }
+  /* Weirdness to smooth out this animation. */
+  to { transform: translateX(-1px); }
 }
