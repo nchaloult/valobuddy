@@ -1,5 +1,5 @@
 // TODO: Type props.
-export default function DeleteConfirmationModal({ stratId, stratTitle }) {
+export default function DeleteConfirmationModal({ stratId, stratTitle, handleCancel }) {
   return (
     <div className="relative z-50" style={{ animation: "fade-in 0.2s" }}>
       {/* Background overlay */}
@@ -40,7 +40,19 @@ export default function DeleteConfirmationModal({ stratId, stratTitle }) {
 
             {/* TODO: What tag should we use for this? */}
             <h4 className="text-3xl font-['Druk_Wide_Bold']">DELETE STRAT</h4>
-            <p>Are you sure you want to delete this strat?</p>
+            <p>Are you sure you want to delete "{stratTitle}"?</p>
+
+            <div className="flex space-x-2 mt-4">
+              <button
+                onClick={() => handleCancel()}
+                className="grow px-4 py-3 text-center text-sm font-['Space_Mono'] border-2 border-neutral-700 bg-gradient-to-t from-neutral-700 to-neutral-900 from-50% to-50% bg-top bg-[length:100%_200%] outline-none hover:bg-bottom hover:border-neutral-500 focus:bg-bottom focus:border-neutral-500 transition-all duration-200">
+                CANCEL
+              </button>
+              <button
+                className="grow px-4 py-3 text-center text-sm font-['Space_Mono'] border-2 border-red-400 bg-gradient-to-t from-red-600 to-red-500 from-50% to-50% bg-top bg-[length:100%_200%] outline-none hover:bg-bottom hover:text-neutral-900 hover:border-red-500 focus:bg-bottom focus:text-neutral-900 focus:border-red-500 transition-all duration-200">
+                DELETE
+              </button>
+            </div>
           </div>
 
         </div>

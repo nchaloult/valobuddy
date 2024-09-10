@@ -8,7 +8,7 @@ export default function EditStrat({ strat }) {
   return (
     <>
       { isDeleteConfirmationModalVisible ?
-          <DeleteConfirmationModal stratId={strat.id} stratTitle={strat.title} />
+          <DeleteConfirmationModal stratId={strat.id} stratTitle={strat.title} handleCancel={() => setIsDeleteConfirmationModalVisible(false)} />
           :
           null
       }
