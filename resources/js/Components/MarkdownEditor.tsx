@@ -47,7 +47,7 @@ export default function MarkdownEditor({
         attributes: {
           spellcheck: "false", // Performance enhancement, plus we don't really need it.
           class:
-            "prose prose-sm sm:prose-base m-5 focus:outline-none text-neutral-100",
+            "prose prose-invert prose-neutral prose-sm sm:prose-base m-5 focus:outline-none",
         },
         handleDrop: (view, event, slice, moved) => {
           // Great blog post about getting drag & drop images to work.
