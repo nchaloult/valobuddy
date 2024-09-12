@@ -1,37 +1,6 @@
 import { EditorProvider, useCurrentEditor } from '@tiptap/react'
 import StarterKit from '@tiptap/starter-kit'
 
-const content = `
-<h2>
-  Hi there,
-</h2>
-<p>
-  this is a <em>basic</em> example of <strong>Tiptap</strong>. Sure, there are all kind of basic text styles you’d probably expect from a text editor. But wait until you see the lists:
-</p>
-<ul>
-  <li>
-    That’s a bullet list with one …
-  </li>
-  <li>
-    … or two list items.
-  </li>
-</ul>
-<p>
-  Isn’t that great? And all of that is editable. But wait, there’s more. Let’s try a code block:
-</p>
-<pre><code class="language-css">body {
-  display: none;
-}</code></pre>
-<p>
-  I know, I know, this is impressive. It’s only the tip of the iceberg though. Give it a try and click a little bit around. Don’t forget to check the other examples too.
-</p>
-<blockquote>
-  Wow, that’s amazing. Good work, boy! 👏
-  <br />
-  — Mom
-</blockquote>
-`;
-
 function MenuBar() {
   const { editor } = useCurrentEditor();
   if (!editor) {
@@ -52,9 +21,10 @@ function MenuBar() {
 }
 
 interface MarkdownEditorProps {
+  initialContent: string;
   setContent: (newContent: unknown) => void;
 }
-export default function MarkdownEditor({ setContent }: MarkdownEditorProps) {
+export default function MarkdownEditor({ initialContent, setContent }: MarkdownEditorProps) {
   return (
     <EditorProvider
       slotBefore={<MenuBar />}
@@ -65,7 +35,7 @@ export default function MarkdownEditor({ setContent }: MarkdownEditorProps) {
           class: "prose prose-sm sm:prose-base m-5 focus:outline-none text-neutral-100",
         },
       }}
-      content={content}
+      content={initialContent}
       onUpdate={({ editor }) => setContent(editor.getHTML())}
     >
     </EditorProvider>

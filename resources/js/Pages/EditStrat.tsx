@@ -44,12 +44,13 @@ export default function EditStrat({ strat }) {
 
       <main className="grid grid-cols-2 grid-gap-4 px-16 py-4">
         <section>
+          <p>{attackerSideContent}</p>
           <h2 className="text-3xl font-['Druk_Wide_Bold'] text-neutral-400 uppercase">Attacker Side</h2>
-          <MarkdownEditor setContent={setAttackerSideContent} />
+          <MarkdownEditor initialContent={strat.attacker_side_notes} setContent={setAttackerSideContent} />
         </section>
         <section>
           <h2 className="text-3xl font-['Druk_Wide_Bold'] text-neutral-400 uppercase">Defender Side</h2>
-          <MarkdownEditor setContent={setDefenderSideContent} />
+          <MarkdownEditor initialContent={strat.defender_side_notes} setContent={setDefenderSideContent} />
         </section>
       </main>
 
