@@ -70,6 +70,14 @@ class StratController extends Controller
 
         $strat = $request->user()
             ->strats()
+            ->select([
+                'id',
+                'title',
+                'attacker_side_notes',
+                'defender_side_notes',
+                'created_at',
+                'updated_at'
+            ])
             ->where('id', $id)
             ->sole();
 
