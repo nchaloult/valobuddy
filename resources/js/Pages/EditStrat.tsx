@@ -62,7 +62,9 @@ export default function EditStrat({ strat }) {
               Attacker Side
             </h2>
             <MarkdownEditor
-              initialContent={strat.attacker_side_notes}
+              initialContent={
+                strat.attacker_side_notes ?? "<em>No content.</em>"
+              }
               setContent={setAttackerSideContent}
             />
           </section>
@@ -71,7 +73,9 @@ export default function EditStrat({ strat }) {
               Defender Side
             </h2>
             <MarkdownEditor
-              initialContent={strat.defender_side_notes}
+              initialContent={
+                strat.defender_side_notes ?? "<em>No content.</em>"
+              }
               setContent={setDefenderSideContent}
             />
           </section>
