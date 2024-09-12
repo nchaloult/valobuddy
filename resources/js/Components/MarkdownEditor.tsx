@@ -9,14 +9,18 @@ function MenuBar() {
   }
 
   return (
-    <div className="p-4 bg-orange-200">
-      <button
-        onClick={() => editor.chain().focus().toggleBold().run()}
-        disabled={!editor.can().chain().focus().toggleBold().run()}
-        className={`${editor.isActive("bold") ? "bg-blue-400" : ""}`}
-      >
-        Bold
-      </button>
+    <div className="bg-neutral-600 pb-0.5">
+      <div className="grid gap-0.5 grid-flow-col auto-cols-max [&>*]:px-2 [&>*]:py-1 [&>*]:text-sm [&>*]:font-['Space_Mono']">
+        <button
+          onClick={() => editor.chain().focus().toggleBold().run()}
+          disabled={!editor.can().chain().focus().toggleBold().run()}
+          className={`bg-gradient-to-r from-red-600 to-neutral-900 from-50% to-50% bg-right-bottom bg-[length:201%_100%] outline-none hover:bg-left-bottom hover:text-neutral-900 focus:bg-left-bottom focus:text-neutral-900 transition-all duration-200 ${
+            editor.isActive("bold") ? "bg-left-bottom" : ""
+          }`}
+        >
+          B
+        </button>
+      </div>
     </div>
   );
 }
@@ -40,7 +44,7 @@ export default function MarkdownEditor({
   }
 
   return (
-    <div className="bg-neutral-700 border-2 border-neutral-600 hover:bg-neutral-600 hover:border-neutral-500 has-[:focus]:bg-neutral-600 has-[:focus]:border-neutral-400 transition-all duration-200">
+    <div className="bg-neutral-700 border-2 border-neutral-600 hover:border-neutral-500 has-[:focus]:border-neutral-400 transition-all duration-200">
       <EditorProvider
         slotBefore={<MenuBar />}
         extensions={[StarterKit, ImageExtension]}
