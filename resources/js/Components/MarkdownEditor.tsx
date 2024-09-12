@@ -40,98 +40,103 @@ export default function MarkdownEditor({
   }
 
   return (
-    <EditorProvider
-      slotBefore={<MenuBar />}
-      extensions={[StarterKit, ImageExtension]}
-      editorProps={{
-        attributes: {
-          spellcheck: "false", // Performance enhancement, plus we don't really need it.
-          class:
-            "prose prose-invert prose-neutral prose-sm sm:prose-base m-5 focus:outline-none",
-        },
-        handleDrop: (view, event, slice, moved) => {
-          // Great blog post about getting drag & drop images to work.
-          // https://www.codemzy.com/blog/tiptap-drag-drop-image
+    <div className="bg-neutral-700 border-2 border-neutral-600 hover:bg-neutral-600 hover:border-neutral-500 has-[:focus]:bg-neutral-600 has-[:focus]:border-neutral-400 transition-all duration-200">
+      <EditorProvider
+        slotBefore={<MenuBar />}
+        extensions={[StarterKit, ImageExtension]}
+        editorProps={{
+          attributes: {
+            spellcheck: "false", // Performance enhancement, plus we don't really need it.
+            // Re. max-w-full: there seems to be a max width set on this editor.
+            // Not sure if it's coming from Tailwind's prose classes, if it's
+            // baked into Tiptap itself, or what. We're overriding it here.
+            class:
+              "prose prose-invert prose-neutral prose-sm max-w-full min-h-[30svh] px-2 py-1 focus:outline-none",
+          },
+          handleDrop: (view, event, slice, moved) => {
+            // Great blog post about getting drag & drop images to work.
+            // https://www.codemzy.com/blog/tiptap-drag-drop-image
 
-          // If doing anything other than dropping an external file...
-          if (
-            !(
-              !moved &&
-              event.dataTransfer &&
-              event.dataTransfer.files &&
-              event.dataTransfer.files[0]
-            )
-          ) {
-            return false;
-          }
-
-          let file = event.dataTransfer.files[0]; // The dropped file.
-          let filesize = (file.size / 1024 / 1024).toFixed(4); // The filesize in MB.
-          if (
-            !(file.type === "image/jpeg" || file.type === "image/png") ||
-            filesize >= 10
-          ) {
-            window.alert(
-              "Images need to be in jpg or png format and less than 10mb in size."
-            );
-            return false;
-          }
-
-          // Check the image's dimensions.
-          let _URL = window.URL || window.webkitURL;
-          let img = new Image();
-          img.src = _URL.createObjectURL(file);
-          img.onload = function () {
-            if (this.width > 5000 || this.height > 5000) {
-              window.alert(
-                "Your images need to be less than 5000 pixels in height and width."
-              );
-            } else {
-              uploadImage(file)
-                .then((publicUrl) => {
-                  // Pre-load the image before responding so loading indicators
-                  // can stay and swaps out smoothly when the image is ready.
-                  let image = new Image();
-                  image.src = publicUrl;
-                  image.onload = function () {
-                    // Place the now uploaded image in the editor where it was
-                    // dropped.
-
-                    const { schema } = view.state;
-                    const coordinates = view.posAtCoords({
-                      left: event.clientX,
-                      top: event.clientY,
-                    });
-
-                    // Create the TipTap Image element/"node".
-                    const node = schema.nodes.image.create({
-                      src: publicUrl,
-                    });
-
-                    // Place that "node" in the correct position.
-                    const transaction = view.state.tr.insert(
-                      coordinates.pos,
-                      node
-                    );
-
-                    return view.dispatch(transaction);
-                  };
-                })
-                .catch(function (error) {
-                  if (error) {
-                    window.alert(
-                      "There was a problem uploading your image, please try again."
-                    );
-                  }
-                });
+            // If doing anything other than dropping an external file...
+            if (
+              !(
+                !moved &&
+                event.dataTransfer &&
+                event.dataTransfer.files &&
+                event.dataTransfer.files[0]
+              )
+            ) {
+              return false;
             }
-          };
 
-          return true;
-        },
-      }}
-      content={initialContent}
-      onUpdate={({ editor }) => setContent(editor.getHTML())}
-    ></EditorProvider>
+            let file = event.dataTransfer.files[0]; // The dropped file.
+            let filesize = (file.size / 1024 / 1024).toFixed(4); // The filesize in MB.
+            if (
+              !(file.type === "image/jpeg" || file.type === "image/png") ||
+              filesize >= 10
+            ) {
+              window.alert(
+                "Images need to be in jpg or png format and less than 10mb in size."
+              );
+              return false;
+            }
+
+            // Check the image's dimensions.
+            let _URL = window.URL || window.webkitURL;
+            let img = new Image();
+            img.src = _URL.createObjectURL(file);
+            img.onload = function () {
+              if (this.width > 5000 || this.height > 5000) {
+                window.alert(
+                  "Your images need to be less than 5000 pixels in height and width."
+                );
+              } else {
+                uploadImage(file)
+                  .then((publicUrl) => {
+                    // Pre-load the image before responding so loading indicators
+                    // can stay and swaps out smoothly when the image is ready.
+                    let image = new Image();
+                    image.src = publicUrl;
+                    image.onload = function () {
+                      // Place the now uploaded image in the editor where it was
+                      // dropped.
+
+                      const { schema } = view.state;
+                      const coordinates = view.posAtCoords({
+                        left: event.clientX,
+                        top: event.clientY,
+                      });
+
+                      // Create the TipTap Image element/"node".
+                      const node = schema.nodes.image.create({
+                        src: publicUrl,
+                      });
+
+                      // Place that "node" in the correct position.
+                      const transaction = view.state.tr.insert(
+                        coordinates.pos,
+                        node
+                      );
+
+                      return view.dispatch(transaction);
+                    };
+                  })
+                  .catch(function (error) {
+                    if (error) {
+                      window.alert(
+                        "There was a problem uploading your image, please try again."
+                      );
+                    }
+                  });
+              }
+            };
+
+            return true;
+          },
+        }}
+        content={initialContent}
+        onUpdate={({ editor }) => setContent(editor.getHTML())}
+      ></EditorProvider>
+    </div>
   );
 }
