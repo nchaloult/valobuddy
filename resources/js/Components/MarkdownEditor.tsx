@@ -1,6 +1,7 @@
 import { EditorProvider, useCurrentEditor } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import ImageExtension from "@tiptap/extension-image";
+import { Dispatch, SetStateAction } from "react";
 
 function MenuBar() {
   const { editor } = useCurrentEditor();
@@ -23,7 +24,7 @@ function MenuBar() {
 
 interface MarkdownEditorProps {
   initialContent: string;
-  setContent: (newContent: unknown) => void;
+  setContent: Dispatch<SetStateAction<string>>;
 }
 export default function MarkdownEditor({
   initialContent,
@@ -80,7 +81,6 @@ export default function MarkdownEditor({
               );
               return false;
             }
-
             // Check the image's dimensions.
             let _URL = window.URL || window.webkitURL;
             let img = new Image();
