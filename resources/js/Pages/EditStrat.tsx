@@ -1,8 +1,12 @@
 import { useState } from "react";
 import DeleteConfirmationModal from "@/Components/DeleteConfirmationModal";
+import MarkdownEditor from "@/Components/MarkdownEditor";
 
 // TODO: Type props.
 export default function EditStrat({ strat }) {
+  const [attackerSideContent, setAttackerSideContent] = useState("");
+  const [defenderSideContent, setDefenderSideContent] = useState("");
+
   const [isDeleteConfirmationModalVisible, setIsDeleteConfirmationModalVisible] = useState(false);
 
   return (
@@ -41,9 +45,11 @@ export default function EditStrat({ strat }) {
       <main className="grid grid-cols-2 grid-gap-4 px-16 py-4">
         <section>
           <h2 className="text-3xl font-['Druk_Wide_Bold'] text-neutral-400 uppercase">Attacker Side</h2>
+          <MarkdownEditor setContent={setAttackerSideContent} />
         </section>
         <section>
           <h2 className="text-3xl font-['Druk_Wide_Bold'] text-neutral-400 uppercase">Defender Side</h2>
+          <MarkdownEditor setContent={setDefenderSideContent} />
         </section>
       </main>
 

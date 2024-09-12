@@ -51,7 +51,10 @@ function MenuBar() {
   );
 }
 
-export default function Tiptap() {
+interface MarkdownEditorProps {
+  setContent: (newContent: unknown) => void;
+}
+export default function MarkdownEditor({ setContent }: MarkdownEditorProps) {
   return (
     <EditorProvider
       slotBefore={<MenuBar />}
@@ -63,6 +66,7 @@ export default function Tiptap() {
         },
       }}
       content={content}
+      onUpdate={({ editor }) => setContent(editor.getHTML())}
     >
     </EditorProvider>
   );
