@@ -1,5 +1,6 @@
-import { EditorProvider, useCurrentEditor } from '@tiptap/react'
-import StarterKit from '@tiptap/starter-kit'
+import { EditorProvider, useCurrentEditor } from "@tiptap/react"
+import StarterKit from "@tiptap/starter-kit"
+import Image from "@tiptap/extension-image"
 
 function MenuBar() {
   const { editor } = useCurrentEditor();
@@ -28,7 +29,7 @@ export default function MarkdownEditor({ initialContent, setContent }: MarkdownE
   return (
     <EditorProvider
       slotBefore={<MenuBar />}
-      extensions={[ StarterKit ]}
+      extensions={[ StarterKit, Image ]}
       editorProps={{
         attributes: {
           spellcheck: 'false', // Performance enhancement, plus we don't really need it.
