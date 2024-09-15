@@ -187,7 +187,7 @@ function MenuBar() {
 
 interface MarkdownEditorProps {
   initialContent: string;
-  setContent: Dispatch<SetStateAction<string>>;
+  setContent: (newContent: string) => void;
 }
 export default function MarkdownEditor({
   initialContent,

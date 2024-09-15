@@ -1,11 +1,15 @@
 import { useState } from "react";
 import DeleteConfirmationModal from "@/Components/DeleteConfirmationModal";
 import MarkdownEditor from "@/Components/MarkdownEditor";
+import { useForm } from "@inertiajs/react";
 
 // TODO: Type props.
 export default function EditStrat({ strat }) {
-  const [attackerSideContent, setAttackerSideContent] = useState("");
-  const [defenderSideContent, setDefenderSideContent] = useState("");
+  const { setData, patch, errors } = useForm<{
+    title?: string;
+    attacker_side_notes?: string;
+    defender_side_notes?: string;
+  }>({});
 
   const [
     isDeleteConfirmationModalVisible,
@@ -33,11 +37,21 @@ export default function EditStrat({ strat }) {
               placeholder="Title"
               aria-label="Title"
               defaultValue={strat.title}
+              onChange={(e) => setData("title", e.target.value)}
               className="grow px-3 py-0 text-5xl font-['Druk_Wide_Bold'] uppercase placeholder:text-neutral-400 bg-neutral-700 border-2 border-neutral-600 outline-none hover:bg-neutral-600 hover:border-neutral-500 focus:ring-0 focus:bg-neutral-600 focus:border-neutral-400 transition-all duration-200"
             />
 
             <button
               type="submit"
+              onClick={() =>
+                patch(
+                  route("strats.update", {
+                    map: "foo",
+                    agent: "bar",
+                    id: strat.id,
+                  })
+                )
+              }
               className="px-5 py-3 text-white text-sm font-['Space_Mono'] border-2 border-neutral-700 bg-gradient-to-r from-red-600 to-neutral-900 from-50% to-50% bg-right-bottom bg-[length:201%_100%] outline-none hover:bg-left-bottom hover:text-neutral-900 hover:border-red-500 focus:bg-left-bottom focus:text-neutral-900 focus:border-red-500 transition-all duration-200"
             >
               SAVE
@@ -65,7 +79,9 @@ export default function EditStrat({ strat }) {
               initialContent={
                 strat.attacker_side_notes ?? "<em>No content.</em>"
               }
-              setContent={setAttackerSideContent}
+              setContent={(newContent: string) =>
+                setData("attacker_side_notes", newContent)
+              }
             />
           </section>
           <section>
@@ -76,7 +92,9 @@ export default function EditStrat({ strat }) {
               initialContent={
                 strat.defender_side_notes ?? "<em>No content.</em>"
               }
-              setContent={setDefenderSideContent}
+              setContent={(newContent: string) =>
+                setData("defender_side_notes", newContent)
+              }
             />
           </section>
         </main>

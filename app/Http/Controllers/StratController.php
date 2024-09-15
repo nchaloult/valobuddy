@@ -90,12 +90,10 @@ class StratController extends Controller
      */
     public function update(Request $request, string $map, string $agent, string $id)
     {
-        // TODO: Is there a way for the frontend to only receive fields which
-        // have changed? That'd save a lot of network IO.
         $validated = $request->validate([
-            'title' => 'required|string',
-            'attacker_side_notes' => 'required|string',
-            'defender_side_notes' => 'required|string'
+            'title' => 'sometimes|string',
+            'attacker_side_notes' => 'sometimes|string',
+            'defender_side_notes' => 'sometimes|string'
         ]);
 
         // TODO: Do we really have to fetch the strat from the database again?
@@ -105,6 +103,8 @@ class StratController extends Controller
             ->where('id', $id)
             ->sole();
 
+        // TODO: And then are we doing _another_ redundant database query to
+        // determine this? There has to be a better, more idiomatic way....
         Gate::authorize('update', $strat);
 
         $strat->update($validated);
