@@ -23,6 +23,7 @@ Route::middleware('auth')->group(function () {
     // https://laracasts.com/series/build-a-forum-with-laravel/episodes/27
     Route::get('/{map}/{agent}/strats/{id}', [StratController::class, 'show'])->name('strats.show');
     Route::get('/{map}/{agent}/strats/{id}/edit', [StratController::class, 'edit'])->name('strats.edit');
+    Route::patch('/{map}/{agent}/strats/{id}/edit', [StratController::class, 'update'])->name('strats.update');
 });
 
 require __DIR__ . '/auth.php';

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Strat;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 use Inertia\Inertia;
 use Inertia\Response;
 
@@ -87,9 +88,32 @@ class StratController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Strat $strat)
+    public function update(Request $request, string $map, string $agent, string $id)
     {
-        //
+        // TODO: Is there a way for the frontend to only receive fields which
+        // have changed? That'd save a lot of network IO.
+        $validated = $request->validate([
+            'title' => 'required|string',
+            'attacker_side_notes' => 'required|string',
+            'defender_side_notes' => 'required|string'
+        ]);
+
+        // TODO: Do we really have to fetch the strat from the database again?
+        // That kinda sucks....
+        $strat = $request->user()
+            ->strats()
+            ->where('id', $id)
+            ->sole();
+
+        Gate::authorize('update', $strat);
+
+        $strat->update($validated);
+
+        return redirect(route('strats.show', [
+            'map' => $map,
+            'agent' => $agent,
+            'id' => $id
+        ]));
     }
 
     /**
