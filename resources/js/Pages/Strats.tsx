@@ -51,8 +51,12 @@ export default function Strats({ strats }) {
             })}
             className="p-4 bg-neutral-800 text-white hover:bg-stone-700"
           >
-            <h2>{strat.title}</h2>
-            <h3>{strat.updated_at}</h3>
+            <h2 className="mb-2">{strat.title}</h2>
+            {/* TODO: Make this dynamic. */}
+            <h3 className="text-sm">Last updated: 3 days ago</h3>
+            <h4 className="text-xs text-neutral-400 italic">
+              (on {strat.updated_at})
+            </h4>
           </Link>
         ))}
       </main>
