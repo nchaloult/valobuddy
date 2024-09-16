@@ -268,7 +268,7 @@ export default function Welcome({ auth }: PageProps) {
             <>
               <Link
                 href={route("strats.index", { map: "foo", agent: "bar" })}
-                className="p-5 text-sm text-white font-['Space_Mono'] border-2 border-neutral-700 bg-gradient-to-r from-red-600 to-neutral-900 from-50% to-50% bg-right-bottom bg-[length:201%_100%] outline-none hover:bg-left-bottom hover:text-neutral-900 hover:border-red-500 focus:bg-left-bottom focus:text-neutral-900 focus:border-red-500 transition-all duration-[250ms]"
+                className="p-5 text-sm text-white font-['Space_Mono'] border-2 border-red-400 bg-gradient-to-r from-red-600 to-red-500 from-50% to-50% bg-right-bottom bg-[length:201%_100%] outline-none hover:bg-left-bottom hover:text-neutral-900 hover:border-red-500 focus:bg-left-bottom focus:text-neutral-900 focus:border-red-500 transition-all duration-[250ms]"
               >
                 VIEW LIBRARY
               </Link>
@@ -284,13 +284,13 @@ export default function Welcome({ auth }: PageProps) {
             <>
               <Link
                 href={route("register")}
-                className="p-5 font-['Space_Mono'] text-white border-2 border-red-300 bg-gradient-to-r from-red-600 to-valored-500 from-50% to-50% bg-right-bottom bg-[length:200%_100%] outline-none hover:bg-left-bottom hover:text-neutral-900 hover:border-valored-500 focus:bg-valored-400 transition-all duration-300 ease-in-out"
+                className="p-5 text-sm text-white font-['Space_Mono'] border-2 border-neutral-700 bg-gradient-to-r from-red-600 to-neutral-900 from-50% to-50% bg-right-bottom bg-[length:201%_100%] outline-none hover:bg-left-bottom hover:text-neutral-900 hover:border-red-500 focus:bg-left-bottom focus:text-neutral-900 focus:border-red-500 transition-all duration-[250ms]"
               >
                 SIGN UP NOW
               </Link>
               <Link
                 href={route("login")}
-                className="p-5 font-['Space_Mono'] text-white border-2 border-neutral-700 bg-gradient-to-r from-red-600 to-neutral-900 from-50% to-50% bg-right-bottom bg-[length:201%_100%] outline-none hover:bg-left-bottom hover:text-neutral-900 hover:border-valored-500 focus:bg-valored-400 transition-all duration-300 ease-in-out"
+                className="p-5 text-sm text-white font-['Space_Mono'] border-2 border-red-400 bg-gradient-to-r from-red-600 to-red-500 from-50% to-50% bg-right-bottom bg-[length:201%_100%] outline-none hover:bg-left-bottom hover:text-neutral-900 hover:border-red-500 focus:bg-left-bottom focus:text-neutral-900 focus:border-red-500 transition-all duration-[250ms]"
               >
                 LOG IN
               </Link>
