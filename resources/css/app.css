@@ -1,10 +1,3 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-@keyframes blur-in {
-  /* Identical to Tailwind's backdrop-blur-sm class. */
-  /* https://tailwindcss.com/docs/backdrop-blur */
-  from { backdrop-filter: blur(0px); }
-  to { backdrop-filter: blur(4px); }
-}
