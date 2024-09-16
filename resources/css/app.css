@@ -13,9 +13,3 @@
   from { backdrop-filter: blur(0px); }
   to { backdrop-filter: blur(4px); }
 }
-
-@keyframes hazard-tape-marquee-ltor {
-  from { transform: translateX(-1.5rem); }
-  /* Weirdness to smooth out this animation. */
-  to { transform: translateX(-1px); }
-}

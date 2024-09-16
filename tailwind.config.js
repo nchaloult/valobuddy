@@ -41,6 +41,11 @@ export default {
                     "0%": { transform: "translateX(100%)" },
                     "100%": { transform: "translateX(200%)" },
                 },
+                hazardTapeMarquee: {
+                    "0%": { transform: "translateX(-1.5rem)" },
+                    // Weirdness to smooth out this animation.
+                    "100%": { transform: "translateX(-1px)" },
+                },
             },
             animation: {
                 "marquee-rtol": "marqueeRtol 25s linear infinite",
@@ -49,6 +54,7 @@ export default {
                 "marquee-ltor": "marqueeLtor 25s linear infinite",
                 "marquee-ltor-two": "marqueeLtorTwo 25s linear infinite",
                 "marquee-ltor-three": "marqueeLtorThree 25s linear infinite",
+                "hazard-tape-marquee": "hazardTapeMarquee 1s linear infinite",
             },
         },
     },
