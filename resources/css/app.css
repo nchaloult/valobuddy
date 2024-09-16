@@ -2,11 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@keyframes fade-in {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
 @keyframes blur-in {
   /* Identical to Tailwind's backdrop-blur-sm class. */
   /* https://tailwindcss.com/docs/backdrop-blur */

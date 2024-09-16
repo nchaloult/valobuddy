@@ -7,7 +7,7 @@ export default function DeleteConfirmationModal({
   handleCancel,
 }) {
   return (
-    <div className="relative z-50" style={{ animation: "fade-in 0.2s" }}>
+    <div className="relative z-50 animate-fade-in">
       {/* Background overlay */}
       {/* <div className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm transition-opacity"></div> */}
       <div className="fixed inset-0 bg-gradient-to-b from-red-500 to-transparent from-[-60%] to-80%">
