@@ -22,7 +22,7 @@
     @inertiaHead
 </head>
 
-<body class="flex flex-col h-full bg-neutral-800 text-neutral-100">
+<body class="flex flex-col h-full bg-neutral-800 text-neutral-100 font-normal">
     @inertia
 </body>
 

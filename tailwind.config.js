@@ -14,7 +14,12 @@ export default {
     theme: {
         extend: {
             fontFamily: {
-                sans: ["Figtree", ...defaultTheme.fontFamily.sans],
+                sans: [
+                    "Helvetica Neue",
+                    "Helvetica",
+                    "Arial",
+                    ...defaultTheme.fontFamily.sans,
+                ],
             },
             keyframes: {
                 marqueeRtol: {
