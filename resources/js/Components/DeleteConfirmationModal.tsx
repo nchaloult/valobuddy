@@ -1,4 +1,5 @@
 import { CloseIcon } from "@/Components/SVGs";
+import { Link } from "@inertiajs/react";
 
 // TODO: Type props.
 export default function DeleteConfirmationModal({
@@ -76,9 +77,19 @@ export default function DeleteConfirmationModal({
               >
                 CANCEL
               </button>
-              <button className="grow px-4 py-3 text-center text-sm font-['Space_Mono'] border-2 border-red-400 bg-gradient-to-t from-red-600 to-red-500 from-50% to-50% bg-top bg-[length:100%_200%] outline-none hover:bg-bottom hover:text-neutral-900 hover:border-red-500 focus:bg-bottom focus:text-neutral-900 focus:border-red-500 transition-all duration-200">
+              <Link
+                as="button"
+                type="button"
+                href={route("strats.destroy", {
+                  map: "foo",
+                  agent: "bar",
+                  id: stratId,
+                })}
+                method="delete"
+                className="grow px-4 py-3 text-center text-sm font-['Space_Mono'] border-2 border-red-400 bg-gradient-to-t from-red-600 to-red-500 from-50% to-50% bg-top bg-[length:100%_200%] outline-none hover:bg-bottom hover:text-neutral-900 hover:border-red-500 focus:bg-bottom focus:text-neutral-900 focus:border-red-500 transition-all duration-200"
+              >
                 DELETE
-              </button>
+              </Link>
             </div>
           </div>
         </div>

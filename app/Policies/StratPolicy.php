@@ -45,7 +45,7 @@ class StratPolicy
      */
     public function delete(User $user, Strat $strat): bool
     {
-        //
+        return $this->update($user, $strat);
     }
 
     /**

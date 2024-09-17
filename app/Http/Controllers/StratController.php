@@ -119,8 +119,24 @@ class StratController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Strat $strat)
+    public function destroy(Request $request, string $map, string $agent, string $id)
     {
-        //
+        // TODO: Do we really have to fetch the strat from the database again?
+        // That kinda sucks....
+        $strat = $request->user()
+            ->strats()
+            ->where('id', $id)
+            ->sole();
+
+        // TODO: And then are we doing _another_ redundant database query to
+        // determine this? There has to be a better, more idiomatic way....
+        Gate::authorize('delete', $strat);
+
+        $strat->delete();
+
+        return redirect(route('strats.index', [
+            'map' => $map,
+            'agent' => $agent
+        ]));
     }
 }

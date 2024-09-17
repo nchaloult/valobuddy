@@ -24,6 +24,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/{map}/{agent}/strats/{id}', [StratController::class, 'show'])->name('strats.show');
     Route::get('/{map}/{agent}/strats/{id}/edit', [StratController::class, 'edit'])->name('strats.edit');
     Route::patch('/{map}/{agent}/strats/{id}/edit', [StratController::class, 'update'])->name('strats.update');
+    Route::delete('/{map}/{agent}/strats/{id}', [StratController::class, 'destroy'])->name('strats.destroy');
 });
 
 require __DIR__ . '/auth.php';
