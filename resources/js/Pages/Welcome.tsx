@@ -1,6 +1,7 @@
 import { Link, Head } from "@inertiajs/react";
 import { PageProps } from "@/types";
 import { useEffect, useState } from "react";
+import Header from "@/Components/Header";
 
 const MARQUEE_PHRASES = [
   "Get ValoBuddy",
@@ -248,57 +249,61 @@ export default function Welcome({ auth }: PageProps) {
   }, []);
 
   return (
-    <main
-      // https://www.ibelick.com/blog/create-grid-and-dot-backgrounds-with-css-tailwind-css
-      className="flex flex-col space-y-32 grow justify-center items-center bg-[radial-gradient(#333333_1px,transparent_2px)] [background-size:32px_32px]"
-    >
-      <MarqueeRtol phrases={MARQUEE_PHRASES} />
-      <div className="flex flex-col items-center space-y-4">
-        <h1 className="text-5xl lg:text-7xl font-['Space_Mono'] scale-y-110">
-          {productNameText}
-        </h1>
-        <h2 className="lg:text-lg text-center">
-          The <em>ultimate</em> notes system for{" "}
-          <span className="text-red-500 font-bold">
-            high-ELO Valorant players
-          </span>
-        </h2>
-        <div className="flex space-x-4">
-          {auth.user ? (
-            <>
-              <Link
-                href={route("strats.index", { map: "foo", agent: "bar" })}
-                className="p-5 text-sm text-white font-['Space_Mono'] border-2 border-red-400 bg-gradient-to-r from-red-600 to-red-500 from-50% to-50% bg-right-bottom bg-[length:201%_100%] outline-none hover:bg-left-bottom hover:text-neutral-900 hover:border-red-500 focus:bg-left-bottom focus:text-neutral-900 focus:border-red-500 transition-all duration-[250ms]"
-              >
-                VIEW LIBRARY
-              </Link>
-              {/* TODO: Fix this link. */}
-              <Link
-                href="/"
-                className="p-5 text-sm text-white font-['Space_Mono'] border-2 border-neutral-700 bg-gradient-to-r from-red-600 to-neutral-900 from-50% to-50% bg-right-bottom bg-[length:201%_100%] outline-none hover:bg-left-bottom hover:text-neutral-900 hover:border-red-500 focus:bg-left-bottom focus:text-neutral-900 focus:border-red-500 transition-all duration-[250ms]"
-              >
-                SIGN OUT
-              </Link>
-            </>
-          ) : (
-            <>
-              <Link
-                href={route("register")}
-                className="p-5 text-sm text-white font-['Space_Mono'] border-2 border-neutral-700 bg-gradient-to-r from-red-600 to-neutral-900 from-50% to-50% bg-right-bottom bg-[length:201%_100%] outline-none hover:bg-left-bottom hover:text-neutral-900 hover:border-red-500 focus:bg-left-bottom focus:text-neutral-900 focus:border-red-500 transition-all duration-[250ms]"
-              >
-                SIGN UP NOW
-              </Link>
-              <Link
-                href={route("login")}
-                className="p-5 text-sm text-white font-['Space_Mono'] border-2 border-red-400 bg-gradient-to-r from-red-600 to-red-500 from-50% to-50% bg-right-bottom bg-[length:201%_100%] outline-none hover:bg-left-bottom hover:text-neutral-900 hover:border-red-500 focus:bg-left-bottom focus:text-neutral-900 focus:border-red-500 transition-all duration-[250ms]"
-              >
-                LOG IN
-              </Link>
-            </>
-          )}
+    <>
+      <Header user={auth.user} />
+
+      <main
+        // https://www.ibelick.com/blog/create-grid-and-dot-backgrounds-with-css-tailwind-css
+        className="flex flex-col space-y-32 grow justify-center items-center bg-[radial-gradient(#333333_1px,transparent_2px)] [background-size:32px_32px]"
+      >
+        <MarqueeRtol phrases={MARQUEE_PHRASES} />
+        <div className="flex flex-col items-center space-y-4">
+          <h1 className="text-5xl lg:text-7xl font-['Space_Mono'] scale-y-110">
+            {productNameText}
+          </h1>
+          <h2 className="lg:text-lg text-center">
+            The <em>ultimate</em> notes system for{" "}
+            <span className="text-red-500 font-bold">
+              high-ELO Valorant players
+            </span>
+          </h2>
+          <div className="flex space-x-4">
+            {auth.user ? (
+              <>
+                <Link
+                  href={route("strats.index", { map: "foo", agent: "bar" })}
+                  className="p-5 text-sm text-white font-['Space_Mono'] border-2 border-red-400 bg-gradient-to-r from-red-600 to-red-500 from-50% to-50% bg-right-bottom bg-[length:201%_100%] outline-none hover:bg-left-bottom hover:text-neutral-900 hover:border-red-500 focus:bg-left-bottom focus:text-neutral-900 focus:border-red-500 transition-all duration-[250ms]"
+                >
+                  VIEW LIBRARY
+                </Link>
+                {/* TODO: Fix this link. */}
+                <Link
+                  href="/"
+                  className="p-5 text-sm text-white font-['Space_Mono'] border-2 border-neutral-700 bg-gradient-to-r from-red-600 to-neutral-900 from-50% to-50% bg-right-bottom bg-[length:201%_100%] outline-none hover:bg-left-bottom hover:text-neutral-900 hover:border-red-500 focus:bg-left-bottom focus:text-neutral-900 focus:border-red-500 transition-all duration-[250ms]"
+                >
+                  SIGN OUT
+                </Link>
+              </>
+            ) : (
+              <>
+                <Link
+                  href={route("register")}
+                  className="p-5 text-sm text-white font-['Space_Mono'] border-2 border-neutral-700 bg-gradient-to-r from-red-600 to-neutral-900 from-50% to-50% bg-right-bottom bg-[length:201%_100%] outline-none hover:bg-left-bottom hover:text-neutral-900 hover:border-red-500 focus:bg-left-bottom focus:text-neutral-900 focus:border-red-500 transition-all duration-[250ms]"
+                >
+                  SIGN UP NOW
+                </Link>
+                <Link
+                  href={route("login")}
+                  className="p-5 text-sm text-white font-['Space_Mono'] border-2 border-red-400 bg-gradient-to-r from-red-600 to-red-500 from-50% to-50% bg-right-bottom bg-[length:201%_100%] outline-none hover:bg-left-bottom hover:text-neutral-900 hover:border-red-500 focus:bg-left-bottom focus:text-neutral-900 focus:border-red-500 transition-all duration-[250ms]"
+                >
+                  LOG IN
+                </Link>
+              </>
+            )}
+          </div>
         </div>
-      </div>
-      <MarqueeLtor phrases={MARQUEE_PHRASES} />
-    </main>
+        <MarqueeLtor phrases={MARQUEE_PHRASES} />
+      </main>
+    </>
   );
 }
