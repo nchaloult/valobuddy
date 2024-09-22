@@ -2,9 +2,10 @@ import { useState } from "react";
 import DeleteConfirmationModal from "@/Components/DeleteConfirmationModal";
 import MarkdownEditor from "@/Components/MarkdownEditor";
 import { useForm } from "@inertiajs/react";
+import { PageProps, Strat } from "@/types";
 
-// TODO: Type props.
-export default function EditStrat({ strat }) {
+type Props = PageProps & { strat: Strat };
+export default function EditStratPage({ strat }: Props) {
   const { setData, patch, errors } = useForm<{
     title?: string;
     attacker_side_notes?: string;

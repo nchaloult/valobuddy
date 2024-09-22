@@ -1,12 +1,18 @@
 import { CloseIcon } from "@/Components/SVGs";
 import { Link } from "@inertiajs/react";
 
-// TODO: Type props.
+// TODO: Somehow reference from some shared type definition. Don't duplicate
+// type definitions all across the frontend.
+interface Props {
+  stratId: number;
+  stratTitle: string;
+  handleCancel: () => void;
+}
 export default function DeleteConfirmationModal({
   stratId,
   stratTitle,
   handleCancel,
-}) {
+}: Props) {
   return (
     <div className="relative z-50 animate-fade-in">
       {/* Background overlay */}

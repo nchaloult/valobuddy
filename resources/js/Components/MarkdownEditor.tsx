@@ -2,7 +2,6 @@ import { EditorProvider, useCurrentEditor } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import ImageExtension from "@tiptap/extension-image";
 import LinkExtension from "@tiptap/extension-link";
-import { Dispatch, SetStateAction } from "react";
 function MenuBar() {
   const { editor } = useCurrentEditor();
   if (!editor) {
@@ -255,6 +254,12 @@ export default function MarkdownEditor({
                       left: event.clientX,
                       top: event.clientY,
                     });
+                    if (!coordinates) {
+                      // TODO: Revisit this home-grown error message?
+                      throw new Error(
+                        "The editor view did not return coordinates for its current position."
+                      );
+                    }
 
                     // Create the TipTap Image element/"node".
                     const node = schema.nodes.image.create({

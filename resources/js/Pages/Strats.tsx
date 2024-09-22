@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { Link } from "@inertiajs/react";
 import CreateActionButton from "@/Components/CreateActionButton";
+import { PageProps, Strat } from "@/types";
 
-// TODO: Type props.
-export default function Strats({ strats }) {
+type Props = PageProps & { strats: Strat[] };
+export default function StratsPage({ strats }: Props) {
   const [filteredStrats, setFilteredStrats] = useState(strats);
 
   function updateFilteredStrats(query: string) {

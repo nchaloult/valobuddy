@@ -1,7 +1,8 @@
+import { PageProps, Strat } from "@/types";
 import { Link } from "@inertiajs/react";
 
-// TODO: Type props.
-export default function Strat({ strat }) {
+type Props = PageProps & { strat: Strat };
+export default function StratPage({ strat }: Props) {
   return (
     <>
       <header className="flex flex-col space-y-2 z-10 sticky top-0 p-4 w-full bg-neutral-900/95 shadow-lg shadow-neutral-200/5">
