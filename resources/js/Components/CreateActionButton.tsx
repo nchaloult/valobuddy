@@ -5,7 +5,7 @@ export default function CreateActionButton() {
 
   // TODO: Animate between the stages when areActionsVisible is toggled.
   return (
-    <div className="fixed z-20 bottom-8 right-8 p-4 bg-neutral-900/80 shadow-lg shadow-neutral-200/5 has-[:hover]:p-5 has-[:hover]:bottom-7 has-[:hover]:right-7 transition-all duration-200">
+    <div className="fixed z-20 bottom-8 right-8 p-4 bg-neutral-900/80 shadow-lg shadow-neutral-200/5 border border-white/10 has-[:hover]:p-5 has-[:hover]:bottom-7 has-[:hover]:right-7 transition-all duration-200">
       {areActionsVisible ? (
         <div className="flex flex-col space-y-2">
           <button
