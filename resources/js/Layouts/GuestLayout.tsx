@@ -9,7 +9,7 @@ export default function GuestLayout({ children }: PropsWithChildren) {
     <div className="flex flex-col min-h-svh">
       <Header />
 
-      <div className="grow">{children}</div>
+      {children}
 
       {/* TODO: Add Footer component. */}
     </div>
