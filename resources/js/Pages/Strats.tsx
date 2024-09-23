@@ -31,7 +31,7 @@ export default function StratsPage({ strats }: Props) {
             aria-label="Search strats"
             autoFocus
             onChange={(e) => updateFilteredStrats(e.target.value)}
-            className="grow text-neutral-200 uppercase placeholder:text-neutral-400 bg-neutral-700 border-2 border-neutral-600 outline-none hover:bg-neutral-600 hover:border-neutral-500 focus:ring-0 focus:bg-neutral-600 focus:border-neutral-400 transition-all duration-200"
+            className="grow px-3 py-2 text-neutral-200 uppercase placeholder:text-neutral-400 bg-neutral-700 border-2 border-neutral-600 outline-none hover:bg-neutral-600 hover:border-neutral-500 focus:ring-0 focus:bg-neutral-600 focus:border-neutral-400 transition-all duration-200"
           />
           <button
             type="submit"
