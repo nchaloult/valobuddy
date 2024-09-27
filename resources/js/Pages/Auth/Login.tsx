@@ -123,7 +123,8 @@ export default function Login({
 
             <div className="flex flex-col space-y-2 items-center justify-center">
               <WidePrimaryButton fullWidth disabled={processing}>
-                LOG IN
+                {/* TODO: Replace "WORKING..." with some kind of on-brand animation. */}
+                {processing ? "WORKING..." : "LOG IN"}
               </WidePrimaryButton>
               {canResetPassword && (
                 <Link
