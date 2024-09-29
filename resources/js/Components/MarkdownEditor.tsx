@@ -28,8 +28,8 @@ function MenuBar() {
           title="Bold"
           onClick={() => editor.chain().focus().toggleBold().run()}
           disabled={!editor.can().chain().focus().toggleBold().run()}
-          className={`bg-gradient-to-r from-red-600 to-neutral-900 from-50% to-50% bg-right-bottom bg-[length:201%_100%] outline-none hover:bg-left-bottom hover:text-neutral-900 focus:bg-left-bottom focus:text-neutral-900 transition-all duration-200 ${
-            editor.isActive("bold") ? "bg-left-bottom" : ""
+          className={`bg-gradient-to-r from-red-600 to-neutral-900 from-50% to-50% bg-[length:201%_100%] outline-none hover:bg-left-bottom hover:text-neutral-900 focus:bg-left-bottom focus:text-neutral-900 transition-all duration-200 ${
+            editor.isActive("bold") ? "bg-left-bottom" : "bg-right-bottom"
           }`}
         >
           B
@@ -38,8 +38,8 @@ function MenuBar() {
           title="Italic"
           onClick={() => editor.chain().focus().toggleItalic().run()}
           disabled={!editor.can().chain().focus().toggleItalic().run()}
-          className={`bg-gradient-to-r from-red-600 to-neutral-900 from-50% to-50% bg-right-bottom bg-[length:201%_100%] outline-none hover:bg-left-bottom hover:text-neutral-900 focus:bg-left-bottom focus:text-neutral-900 transition-all duration-200 ${
-            editor.isActive("italic") ? "bg-left-bottom" : ""
+          className={`bg-gradient-to-r from-red-600 to-neutral-900 from-50% to-50% bg-[length:201%_100%] outline-none hover:bg-left-bottom hover:text-neutral-900 focus:bg-left-bottom focus:text-neutral-900 transition-all duration-200 ${
+            editor.isActive("italic") ? "bg-left-bottom" : "bg-right-bottom"
           }`}
         >
           I
@@ -48,8 +48,8 @@ function MenuBar() {
           title="Strikethrough"
           onClick={() => editor.chain().focus().toggleStrike().run()}
           disabled={!editor.can().chain().focus().toggleStrike().run()}
-          className={`bg-gradient-to-r from-red-600 to-neutral-900 from-50% to-50% bg-right-bottom bg-[length:201%_100%] outline-none hover:bg-left-bottom hover:text-neutral-900 focus:bg-left-bottom focus:text-neutral-900 transition-all duration-200 ${
-            editor.isActive("strike") ? "bg-left-bottom" : ""
+          className={`bg-gradient-to-r from-red-600 to-neutral-900 from-50% to-50% bg-[length:201%_100%] outline-none hover:bg-left-bottom hover:text-neutral-900 focus:bg-left-bottom focus:text-neutral-900 transition-all duration-200 ${
+            editor.isActive("strike") ? "bg-left-bottom" : "bg-right-bottom"
           }`}
         >
           S
@@ -58,8 +58,8 @@ function MenuBar() {
           title="Block quote"
           onClick={() => editor.chain().focus().toggleBlockquote().run()}
           disabled={!editor.can().chain().focus().toggleBlockquote().run()}
-          className={`bg-gradient-to-r from-red-600 to-neutral-900 from-50% to-50% bg-right-bottom bg-[length:201%_100%] outline-none hover:bg-left-bottom hover:text-neutral-900 focus:bg-left-bottom focus:text-neutral-900 transition-all duration-200 ${
-            editor.isActive("blockquote") ? "bg-left-bottom" : ""
+          className={`bg-gradient-to-r from-red-600 to-neutral-900 from-50% to-50% bg-[length:201%_100%] outline-none hover:bg-left-bottom hover:text-neutral-900 focus:bg-left-bottom focus:text-neutral-900 transition-all duration-200 ${
+            editor.isActive("blockquote") ? "bg-left-bottom" : "bg-right-bottom"
           }`}
         >
           "
@@ -68,8 +68,8 @@ function MenuBar() {
           title="Bulleted list"
           onClick={() => editor.chain().focus().toggleBulletList().run()}
           disabled={!editor.can().chain().focus().toggleBulletList().run()}
-          className={`bg-gradient-to-r from-red-600 to-neutral-900 from-50% to-50% bg-right-bottom bg-[length:201%_100%] outline-none hover:bg-left-bottom hover:text-neutral-900 focus:bg-left-bottom focus:text-neutral-900 transition-all duration-200 ${
-            editor.isActive("bulletList") ? "bg-left-bottom" : ""
+          className={`bg-gradient-to-r from-red-600 to-neutral-900 from-50% to-50% bg-[length:201%_100%] outline-none hover:bg-left-bottom hover:text-neutral-900 focus:bg-left-bottom focus:text-neutral-900 transition-all duration-200 ${
+            editor.isActive("bulletList") ? "bg-left-bottom" : "bg-right-bottom"
           }`}
         >
           *
@@ -78,8 +78,10 @@ function MenuBar() {
           title="Numbered list"
           onClick={() => editor.chain().focus().toggleOrderedList().run()}
           disabled={!editor.can().chain().focus().toggleOrderedList().run()}
-          className={`bg-gradient-to-r from-red-600 to-neutral-900 from-50% to-50% bg-right-bottom bg-[length:201%_100%] outline-none hover:bg-left-bottom hover:text-neutral-900 focus:bg-left-bottom focus:text-neutral-900 transition-all duration-200 ${
-            editor.isActive("orderedList") ? "bg-left-bottom" : ""
+          className={`bg-gradient-to-r from-red-600 to-neutral-900 from-50% to-50% bg-[length:201%_100%] outline-none hover:bg-left-bottom hover:text-neutral-900 focus:bg-left-bottom focus:text-neutral-900 transition-all duration-200 ${
+            editor.isActive("orderedList")
+              ? "bg-left-bottom"
+              : "bg-right-bottom"
           }`}
         >
           1
@@ -89,8 +91,8 @@ function MenuBar() {
         <button
           title="Hyperlink"
           onClick={promptForHyperlink}
-          className={`bg-gradient-to-r from-red-600 to-neutral-900 from-50% to-50% bg-right-bottom bg-[length:201%_100%] outline-none hover:bg-left-bottom hover:text-neutral-900 focus:bg-left-bottom focus:text-neutral-900 transition-all duration-200 ${
-            editor.isActive("link") ? "bg-left-bottom" : ""
+          className={`bg-gradient-to-r from-red-600 to-neutral-900 from-50% to-50% bg-[length:201%_100%] outline-none hover:bg-left-bottom hover:text-neutral-900 focus:bg-left-bottom focus:text-neutral-900 transition-all duration-200 ${
+            editor.isActive("link") ? "bg-left-bottom" : "bg-right-bottom"
           }`}
         >
           L
@@ -103,8 +105,10 @@ function MenuBar() {
           disabled={
             !editor.can().chain().focus().toggleHeading({ level: 1 }).run()
           }
-          className={`bg-gradient-to-r from-red-600 to-neutral-900 from-50% to-50% bg-right-bottom bg-[length:201%_100%] outline-none hover:bg-left-bottom hover:text-neutral-900 focus:bg-left-bottom focus:text-neutral-900 transition-all duration-200 ${
-            editor.isActive("heading", { level: 1 }) ? "bg-left-bottom" : ""
+          className={`bg-gradient-to-r from-red-600 to-neutral-900 from-50% to-50% bg-[length:201%_100%] outline-none hover:bg-left-bottom hover:text-neutral-900 focus:bg-left-bottom focus:text-neutral-900 transition-all duration-200 ${
+            editor.isActive("heading", { level: 1 })
+              ? "bg-left-bottom"
+              : "bg-right-bottom"
           }`}
         >
           H1
@@ -117,8 +121,10 @@ function MenuBar() {
           disabled={
             !editor.can().chain().focus().toggleHeading({ level: 2 }).run()
           }
-          className={`bg-gradient-to-r from-red-600 to-neutral-900 from-50% to-50% bg-right-bottom bg-[length:201%_100%] outline-none hover:bg-left-bottom hover:text-neutral-900 focus:bg-left-bottom focus:text-neutral-900 transition-all duration-200 ${
-            editor.isActive("heading", { level: 2 }) ? "bg-left-bottom" : ""
+          className={`bg-gradient-to-r from-red-600 to-neutral-900 from-50% to-50% bg-[length:201%_100%] outline-none hover:bg-left-bottom hover:text-neutral-900 focus:bg-left-bottom focus:text-neutral-900 transition-all duration-200 ${
+            editor.isActive("heading", { level: 2 })
+              ? "bg-left-bottom"
+              : "bg-right-bottom"
           }`}
         >
           H2
@@ -131,8 +137,10 @@ function MenuBar() {
           disabled={
             !editor.can().chain().focus().toggleHeading({ level: 3 }).run()
           }
-          className={`bg-gradient-to-r from-red-600 to-neutral-900 from-50% to-50% bg-right-bottom bg-[length:201%_100%] outline-none hover:bg-left-bottom hover:text-neutral-900 focus:bg-left-bottom focus:text-neutral-900 transition-all duration-200 ${
-            editor.isActive("heading", { level: 3 }) ? "bg-left-bottom" : ""
+          className={`bg-gradient-to-r from-red-600 to-neutral-900 from-50% to-50% bg-[length:201%_100%] outline-none hover:bg-left-bottom hover:text-neutral-900 focus:bg-left-bottom focus:text-neutral-900 transition-all duration-200 ${
+            editor.isActive("heading", { level: 3 })
+              ? "bg-left-bottom"
+              : "bg-right-bottom"
           }`}
         >
           H3
@@ -145,8 +153,10 @@ function MenuBar() {
           disabled={
             !editor.can().chain().focus().toggleHeading({ level: 4 }).run()
           }
-          className={`bg-gradient-to-r from-red-600 to-neutral-900 from-50% to-50% bg-right-bottom bg-[length:201%_100%] outline-none hover:bg-left-bottom hover:text-neutral-900 focus:bg-left-bottom focus:text-neutral-900 transition-all duration-200 ${
-            editor.isActive("heading", { level: 4 }) ? "bg-left-bottom" : ""
+          className={`bg-gradient-to-r from-red-600 to-neutral-900 from-50% to-50% bg-[length:201%_100%] outline-none hover:bg-left-bottom hover:text-neutral-900 focus:bg-left-bottom focus:text-neutral-900 transition-all duration-200 ${
+            editor.isActive("heading", { level: 4 })
+              ? "bg-left-bottom"
+              : "bg-right-bottom"
           }`}
         >
           H4
@@ -159,8 +169,10 @@ function MenuBar() {
           disabled={
             !editor.can().chain().focus().toggleHeading({ level: 5 }).run()
           }
-          className={`bg-gradient-to-r from-red-600 to-neutral-900 from-50% to-50% bg-right-bottom bg-[length:201%_100%] outline-none hover:bg-left-bottom hover:text-neutral-900 focus:bg-left-bottom focus:text-neutral-900 transition-all duration-200 ${
-            editor.isActive("heading", { level: 5 }) ? "bg-left-bottom" : ""
+          className={`bg-gradient-to-r from-red-600 to-neutral-900 from-50% to-50% bg-[length:201%_100%] outline-none hover:bg-left-bottom hover:text-neutral-900 focus:bg-left-bottom focus:text-neutral-900 transition-all duration-200 ${
+            editor.isActive("heading", { level: 5 })
+              ? "bg-left-bottom"
+              : "bg-right-bottom"
           }`}
         >
           H5
@@ -173,8 +185,10 @@ function MenuBar() {
           disabled={
             !editor.can().chain().focus().toggleHeading({ level: 6 }).run()
           }
-          className={`bg-gradient-to-r from-red-600 to-neutral-900 from-50% to-50% bg-right-bottom bg-[length:201%_100%] outline-none hover:bg-left-bottom hover:text-neutral-900 focus:bg-left-bottom focus:text-neutral-900 transition-all duration-200 ${
-            editor.isActive("heading", { level: 6 }) ? "bg-left-bottom" : ""
+          className={`bg-gradient-to-r from-red-600 to-neutral-900 from-50% to-50% bg-[length:201%_100%] outline-none hover:bg-left-bottom hover:text-neutral-900 focus:bg-left-bottom focus:text-neutral-900 transition-all duration-200 ${
+            editor.isActive("heading", { level: 6 })
+              ? "bg-left-bottom"
+              : "bg-right-bottom"
           }`}
         >
           H6
