@@ -1,7 +1,7 @@
-import { PageProps, Strat } from "@/types";
+import { PageProps, StratForViewing } from "@/types";
 import { Link } from "@inertiajs/react";
 
-type Props = PageProps & { strat: Strat };
+type Props = PageProps & { strat: StratForViewing };
 export default function StratPage({ strat }: Props) {
   return (
     <>
@@ -42,14 +42,66 @@ export default function StratPage({ strat }: Props) {
 
       <main className="grid grid-cols-2 gap-4 px-16 py-4">
         <section>
-          <h2 className="text-3xl font-['Druk_Wide_Bold'] text-neutral-400 uppercase">
+          <h2 className="mb-2 text-3xl font-['Druk_Wide_Bold'] text-neutral-400 uppercase">
             Attacker Side
           </h2>
+          <article
+            className="prose prose-invert prose-neutral prose-sm"
+            dangerouslySetInnerHTML={{
+              // TODO: Doing this "dangerouslySetInnerHTML" shit is scary af,
+              // but it gives us more (easy) control of how this HTML is styled,
+              // and it's only really vulnerable to one attack vector?
+              //
+              // Since this HTML is generated server-side (and sanitized pretty
+              // well with Laravel's markdown() config options), we aren't at
+              // risk of storing anything bad there. But whatever _is_ stored is
+              // blindly inserted into the HTML we server-side-render and send
+              // to the client. If an attacker were to gain write access to our
+              // DB, they could write malicious HTML in the
+              // attacker_side_notes_html or defender_side_notes_html column.
+              //
+              // I personally think we might have bigger problems if someone
+              // can write to our DB: that DB is only available from other
+              // machines in our VPS/virtual private network, so they'd have to
+              // have gained access to one of those machines.
+
+              // TODO: What to do when this is an empty string? _Should_ this
+              // ever be allowed to be an empty string? (I kinda don't think
+              // so...)
+              __html: strat.attacker_side_notes_html,
+            }}
+          />
         </section>
         <section>
-          <h2 className="text-3xl font-['Druk_Wide_Bold'] text-neutral-400 uppercase">
+          <h2 className="mb-2 text-3xl font-['Druk_Wide_Bold'] text-neutral-400 uppercase">
             Defender Side
           </h2>
+          <article
+            className="prose prose-invert prose-neutral prose-sm"
+            dangerouslySetInnerHTML={{
+              // TODO: Doing this "dangerouslySetInnerHTML" shit is scary af,
+              // but it gives us more (easy) control of how this HTML is styled,
+              // and it's only really vulnerable to one attack vector?
+              //
+              // Since this HTML is generated server-side (and sanitized pretty
+              // well with Laravel's markdown() config options), we aren't at
+              // risk of storing anything bad there. But whatever _is_ stored is
+              // blindly inserted into the HTML we server-side-render and send
+              // to the client. If an attacker were to gain write access to our
+              // DB, they could write malicious HTML in the
+              // attacker_side_notes_html or defender_side_notes_html column.
+              //
+              // I personally think we might have bigger problems if someone
+              // can write to our DB: that DB is only available from other
+              // machines in our VPS/virtual private network, so they'd have to
+              // have gained access to one of those machines.
+
+              // TODO: What to do when this is an empty string? _Should_ this
+              // ever be allowed to be an empty string? (I kinda don't think
+              // so...)
+              __html: strat.defender_side_notes_html,
+            }}
+          />
         </section>
       </main>
     </>

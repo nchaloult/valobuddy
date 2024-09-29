@@ -16,7 +16,16 @@ export type PageProps<
   ziggy: Config & { location: string };
 };
 
-export interface Strat {
+export interface StratForViewing {
+  id: number;
+  title: string;
+  attacker_side_notes_html: string | null;
+  defender_side_notes_html: string | null;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface StratForEditing {
   id: number;
   title: string;
   attacker_side_notes: string | null;

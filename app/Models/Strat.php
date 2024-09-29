@@ -16,6 +16,26 @@ class Strat extends Model
         'num_images' => 0,
     ];
 
+    protected static function booted()
+    {
+        static::saving(fn(self $strat) => $strat->fill([
+            'attacker_side_notes_html' => str($strat->attacker_side_notes)->markdown([
+                // TODO: Consolidate this config based on Luke Downing's V: The
+                // Comment Strikes Back Laracasts episode.
+                'html_input' => 'strip',
+                'allow_unsafe_links' => false,
+                'max_nesting_level' => 6,
+            ]),
+            'defender_side_notes_html' => str($strat->defender_side_notes)->markdown([
+                // TODO: Consolidate this config based on Luke Downing's V: The
+                // Comment Strikes Back Laracasts episode.
+                'html_input' => 'strip',
+                'allow_unsafe_links' => false,
+                'max_nesting_level' => 6,
+            ]),
+        ]));
+    }
+
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
