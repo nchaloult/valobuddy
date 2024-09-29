@@ -77,9 +77,7 @@ export default function EditStratPage({ strat }: Props) {
               Attacker Side
             </h2>
             <MarkdownEditor
-              initialContent={
-                strat.attacker_side_notes ?? "<em>No content.</em>"
-              }
+              initialContent={strat.attacker_side_notes ?? "_No content._"}
               setContent={(newContent: string) =>
                 setData("attacker_side_notes", newContent)
               }
@@ -90,9 +88,7 @@ export default function EditStratPage({ strat }: Props) {
               Defender Side
             </h2>
             <MarkdownEditor
-              initialContent={
-                strat.defender_side_notes ?? "<em>No content.</em>"
-              }
+              initialContent={strat.defender_side_notes ?? "_No content._"}
               setContent={(newContent: string) =>
                 setData("defender_side_notes", newContent)
               }

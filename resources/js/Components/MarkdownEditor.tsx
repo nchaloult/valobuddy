@@ -2,6 +2,8 @@ import { EditorProvider, useCurrentEditor } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import ImageExtension from "@tiptap/extension-image";
 import LinkExtension from "@tiptap/extension-link";
+import { Markdown } from "tiptap-markdown";
+
 function MenuBar() {
   const { editor } = useCurrentEditor();
   if (!editor) {
@@ -220,7 +222,7 @@ export default function MarkdownEditor({
     <div className="bg-neutral-700 border-2 border-neutral-600 hover:border-neutral-500 has-[:focus]:border-neutral-400 transition-all duration-200">
       <EditorProvider
         slotBefore={<MenuBar />}
-        extensions={[StarterKit, ImageExtension, LinkExtension]}
+        extensions={[StarterKit, ImageExtension, LinkExtension, Markdown]}
         editorProps={{
           attributes: {
             spellcheck: "false", // Performance enhancement, plus we don't really need it.
@@ -302,7 +304,9 @@ export default function MarkdownEditor({
           },
         }}
         content={initialContent}
-        onUpdate={({ editor }) => setContent(editor.getHTML())}
+        onUpdate={({ editor }) =>
+          setContent(editor.storage.markdown.getMarkdown())
+        }
       ></EditorProvider>
     </div>
   );
