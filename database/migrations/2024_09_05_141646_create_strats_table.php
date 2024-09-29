@@ -16,8 +16,8 @@ return new class extends Migration
             $table->id();
             $table->foreignIdFor(User::class);
             $table->string('title'); // TODO: Add a max length to this?
-            $table->text('attacker_side_notes')->nullable();
-            $table->text('defender_side_notes')->nullable();
+            $table->longText('attacker_side_notes')->nullable();
+            $table->longText('defender_side_notes')->nullable();
             $table->unsignedTinyInteger('num_images')->default(0);
             $table->timestamps();
         });
