@@ -68,7 +68,7 @@ export default function StratPage({ strat }: Props) {
               // TODO: What to do when this is an empty string? _Should_ this
               // ever be allowed to be an empty string? (I kinda don't think
               // so...)
-              __html: strat.attacker_side_notes_html,
+              __html: strat.attacker_side_notes_html!,
             }}
           />
         </section>
@@ -99,7 +99,7 @@ export default function StratPage({ strat }: Props) {
               // TODO: What to do when this is an empty string? _Should_ this
               // ever be allowed to be an empty string? (I kinda don't think
               // so...)
-              __html: strat.defender_side_notes_html,
+              __html: strat.defender_side_notes_html!,
             }}
           />
         </section>

@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { Link } from "@inertiajs/react";
 import CreateActionButton from "@/Components/CreateActionButton";
-import { PageProps, Strat } from "@/types";
+import { PageProps, StratForViewing } from "@/types";
 
-type Props = PageProps & { strats: Strat[] };
+type Props = PageProps & { strats: StratForViewing[] };
 export default function StratsPage({ strats }: Props) {
   const [filteredStrats, setFilteredStrats] = useState(strats);
 
