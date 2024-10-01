@@ -19,6 +19,8 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::get('/{map}/{agent}/strats', [StratController::class, 'index'])->name('strats.index');
+    Route::get('/{map}/{agent}/strats/create', [StratController::class, 'create'])->name('strats.create');
+    Route::post('/{map}/{agent}/strats', [StratController::class, 'store'])->name('strats.store');
     // TODO: Do the slug thing.
     // https://laracasts.com/series/build-a-forum-with-laravel/episodes/27
     Route::get('/{map}/{agent}/strats/{id}', [StratController::class, 'show'])->name('strats.show');

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Strat;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use Inertia\Inertia;
@@ -32,15 +33,31 @@ class StratController extends Controller
      */
     public function create()
     {
-        //
+        return Inertia::render('CreateStrat');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request, string $map, string $agent): RedirectResponse
     {
-        //
+        // TODO: Perform validation on the query parameters. Make sure the map
+        // and the agent are in an enum, and that the ID is a positive integer.
+
+        $validated = $request->validate([
+            // TODO: Should we enforce a length >= 1 here?
+            'title' => 'required|string',
+            'attacker_side_notes' => 'sometimes|string',
+            'defender_side_notes' => 'sometimes|string'
+        ]);
+
+        $newStrat = $request->user()->strats()->create($validated);
+
+        return redirect(route('strats.show', [
+            'map' => $map,
+            'agent' => $agent,
+            'id' => $newStrat->id,
+        ]));
     }
 
     /**
@@ -52,6 +69,9 @@ class StratController extends Controller
         // wrong, correct them and redirect to that URL.
         //
         // https://laracasts.com/series/build-a-forum-with-laravel/episodes/27
+
+        // TODO: Perform validation on the query parameters. Make sure the map
+        // and the agent are in an enum, and that the ID is a positive integer.
 
         $strat = $request->user()
             ->strats()
