@@ -17,7 +17,7 @@ export default function StratsPage({ strats }: Props) {
 
   return (
     <>
-      <CreateActionButton />
+      <CreateActionButton map="foo" agent="bar" />
 
       <header className="flex flex-col space-y-2 z-10 sticky top-0 p-4 w-full bg-neutral-900/95 shadow-lg shadow-neutral-200/5">
         <span className="text-neutral-400 text-sm font-['Space_Mono'] scale-y-110 uppercase">

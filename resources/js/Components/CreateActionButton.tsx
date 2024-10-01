@@ -1,6 +1,11 @@
+import { Link } from "@inertiajs/react";
 import { useState } from "react";
 
-export default function CreateActionButton() {
+interface Props {
+  map: string;
+  agent: string;
+}
+export default function CreateActionButton({ map, agent }: Props) {
   const [areActionsVisible, setAreActionsVisible] = useState(false);
 
   // TODO: Animate between the stages when areActionsVisible is toggled.
@@ -14,12 +19,14 @@ export default function CreateActionButton() {
           >
             TAG
           </button>
-          <button
+          <Link
+            href={route("strats.create", { map, agent })}
+            as="button"
             type="button"
             className="px-5 py-3 text-sm text-white font-['Space_Mono'] border-2 border-neutral-700 bg-gradient-to-r from-neutral-700 to-neutral-900 from-50% to-50% bg-right-bottom bg-[length:201%_100%] outline-none hover:bg-left-bottom hover:border-neutral-500 focus:bg-left-bottom focus:border-neutral-500 transition-all duration-200"
           >
             STRAT
-          </button>
+          </Link>
         </div>
       ) : (
         <button
