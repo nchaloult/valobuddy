@@ -40,6 +40,6 @@ services:
       - SESSION_ENCRYPT=false
       - SESSION_PATH=/
       - SESSION_DOMAIN=null
-      - SESSION_SECURE_COOKIE=true
+      - SESSION_SECURE_COOKIE=false
     ports:
       - "80:8080"
