@@ -274,7 +274,7 @@ export default function Welcome({ auth }: PageProps) {
                   href={route("strats.index", { map: "foo", agent: "bar" })}
                   className="p-5 text-sm text-white font-['Space_Mono'] border-2 border-red-400 bg-gradient-to-r from-red-600 to-red-500 from-50% to-50% bg-right-bottom bg-[length:201%_100%] outline-none hover:bg-left-bottom hover:text-neutral-900 hover:border-red-500 focus:bg-left-bottom focus:text-neutral-900 focus:border-red-500 transition-all duration-[250ms]"
                 >
-                  VIEW LIBRARY
+                  VIEW COLLECTION
                 </Link>
                 {/* TODO: Fix this link. */}
                 <Link
