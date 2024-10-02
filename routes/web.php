@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StratController;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -22,8 +23,8 @@ Route::middleware('auth')->group(function () {
         return Inertia::render('MapSelect');
     })->name('collection');
 
-    Route::get('/collection/{map}', function () {
-        return "Agent selector goes here";
+    Route::get('/collection/{map}', function (Request $request, string $map) {
+        return Inertia::render('AgentSelect', ['map' => $map]);
     })->name("collection.map");
 
     Route::get('/{map}/{agent}/strats', [StratController::class, 'index'])->name('strats.index');
