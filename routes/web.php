@@ -18,6 +18,10 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
+    Route::get('/collection', function () {
+        return Inertia::render('Collection');
+    })->name('collection');
+
     Route::get('/{map}/{agent}/strats', [StratController::class, 'index'])->name('strats.index');
     Route::get('/{map}/{agent}/strats/create', [StratController::class, 'create'])->name('strats.create');
     Route::post('/{map}/{agent}/strats', [StratController::class, 'store'])->name('strats.store');
