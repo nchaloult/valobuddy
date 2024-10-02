@@ -34,7 +34,10 @@ type Agent = {
   image: string;
 };
 
-function AgentSelector() {
+type AgentSelectorProps = {
+  map: string;
+};
+function AgentSelector({ map }: AgentSelectorProps) {
   const agents: Agent[] = [
     { name: "astra", image: astra },
     { name: "breach", image: breach },
@@ -63,21 +66,23 @@ function AgentSelector() {
   ];
 
   return (
-    <div className="grid grid-cols-9">
-      {agents.map((agent, i) => (
+    <div className="w-max grid grid-cols-9">
+      {agents.map((agent) => (
         <Link
           key={agent.name}
-          href={route("collection.map", { map: map.name })}
-          className="relative group overflow-hidden opacity-0 animate-rise-and-fade-in ring-2 ring-white/40 hover:ring-4 hover:ring-green-200 transition"
-          style={{ animationDelay: `${0.03 * i}s` }}
+          href={route("collection.map.agent", { map, agent: agent.name })}
+          className="p-1 ring-inset ring-2 ring-white/40 hover:ring-4 hover:ring-green-200 transition"
         >
-          <span className="z-10 absolute bottom-2 md:bottom-4 left-2 md:left-4 text-xl md:text-2xl font-['Druk_Wide_Bold'] uppercase bg-gradient-to-b from-neutral-300 to-white text-transparent bg-clip-text group-hover:text-white transition">
-            {map.name}
-          </span>
           <img
-            src={map.image}
-            alt={map.name}
-            className="group-hover:scale-110 transition ease-out"
+            src={agent.image}
+            alt={agent.name}
+            // Have to do this part with raw CSS, Tailwind doesn't have
+            // classes for "mask".
+            style={{
+              // https://stackoverflow.com/a/68217932
+              mask: "linear-gradient(-60deg, black 30%, #0008, black 70%) right/350% 100%",
+            }}
+            className="hover:animate-[shimmer_0.5s]"
             draggable={false}
           />
         </Link>
@@ -86,13 +91,16 @@ function AgentSelector() {
   );
 }
 
-export default function AgentSelect({ auth }: PageProps) {
+type Props = {
+  map: string;
+};
+export default function AgentSelect({ auth, map }: PageProps & Props) {
   return (
     <div className="flex flex-col h-svh">
       <Header user={auth.user} />
 
-      <main className="grow justify-center items-center p-6 lg:p-16">
-        <AgentSelector />
+      <main className="flex grow justify-center items-center">
+        <AgentSelector map={map} />
       </main>
     </div>
   );
