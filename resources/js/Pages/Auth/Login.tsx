@@ -7,6 +7,7 @@ import TextInput from "@/Components/TextInput";
 import { Link, useForm } from "@inertiajs/react";
 import WidePrimaryButton from "@/Components/WidePrimaryButton";
 import BigProductNameMarquees from "@/Components/BigProductNameMarquees";
+import loginArt from "@/../images/loginArt.webp";
 
 export default function Login({
   status,
@@ -66,7 +67,7 @@ export default function Login({
 
           <div className="w-full h-full bg-neutral-800">
             <img
-              src="https://media.wired.com/photos/5ea0840cb0490300086261e3/master/pass/Cul-Reveal_ReactorA_VALORANT.jpg"
+              src={loginArt}
               className="object-cover h-full grayscale opacity-10"
             />
           </div>
