@@ -19,7 +19,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::get('/collection', function () {
-        return Inertia::render('Collection');
+        return Inertia::render('MapSelect');
     })->name('collection');
 
     Route::get('/collection/{map}', function () {

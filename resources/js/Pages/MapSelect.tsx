@@ -2,7 +2,7 @@ import { PageProps } from "@/types";
 import Header from "@/Components/Header";
 import MapSelector from "@/Components/MapSelector";
 
-export default function Collection({ auth }: PageProps) {
+export default function MapSelect({ auth }: PageProps) {
   return (
     <div className="flex flex-col h-svh">
       <Header user={auth.user} />
