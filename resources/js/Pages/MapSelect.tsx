@@ -1,5 +1,7 @@
 import { PageProps } from "@/types";
 import Header from "@/Components/Header";
+import { Link } from "@inertiajs/react";
+
 import abyss from "@/../images/maps/abyss.webp";
 import ascent from "@/../images/maps/ascent.webp";
 import bind from "@/../images/maps/bind.webp";
@@ -11,7 +13,6 @@ import lotus from "@/../images/maps/lotus.webp";
 import pearl from "@/../images/maps/pearl.webp";
 import split from "@/../images/maps/split.webp";
 import sunset from "@/../images/maps/sunset.webp";
-import { Link } from "@inertiajs/react";
 
 type Map = {
   name: string;
