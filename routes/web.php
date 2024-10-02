@@ -27,6 +27,10 @@ Route::middleware('auth')->group(function () {
         return Inertia::render('AgentSelect', ['map' => $map]);
     })->name("collection.map");
 
+    Route::get('/collection/{map}/{agent}', function () {
+        return "Full-screen vod/strat selector goes here";
+    })->name("collection.map.agent");
+
     Route::get('/{map}/{agent}/strats', [StratController::class, 'index'])->name('strats.index');
     Route::get('/{map}/{agent}/strats/create', [StratController::class, 'create'])->name('strats.create');
     Route::post('/{map}/{agent}/strats', [StratController::class, 'store'])->name('strats.store');
