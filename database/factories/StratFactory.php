@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Enums\Map;
+use App\Enums\Agent;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -25,6 +27,10 @@ class StratFactory extends Factory
         // violation".
         return [
             'user_id' => User::factory(),
+            // 'map' => fake()->randomElement(Map::cases())->value,
+            // 'agent' => fake()->randomElement(Agent::cases())->value,
+            'map' => Map::ABYSS,
+            'agent' => Agent::ASTRA,
             'title' => fake()->sentence(),
             'attacker_side_notes' => fake()->optional()->paragraphs(5, true),
             'defender_side_notes' => fake()->optional()->paragraphs(5, true),
