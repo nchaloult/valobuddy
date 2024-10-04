@@ -42,15 +42,15 @@ Route::middleware('auth')->group(function () {
         return 'Vods browser goes here.';
     })->name('vods.index');
 
-    Route::get('/{map}/{agent}/strats', [StratController::class, 'index'])->name('strats.index');
-    Route::get('/{map}/{agent}/strats/create', [StratController::class, 'create'])->name('strats.create');
-    Route::post('/{map}/{agent}/strats', [StratController::class, 'store'])->name('strats.store');
+    Route::get('/collection/{map}/{agent}/strats', [StratController::class, 'index'])->name('strats.index');
+    Route::get('/collection/{map}/{agent}/strats/create', [StratController::class, 'create'])->name('strats.create');
+    Route::post('/collection/{map}/{agent}/strats', [StratController::class, 'store'])->name('strats.store');
     // TODO: Do the slug thing.
     // https://laracasts.com/series/build-a-forum-with-laravel/episodes/27
-    Route::get('/{map}/{agent}/strats/{id}', [StratController::class, 'show'])->name('strats.show');
-    Route::get('/{map}/{agent}/strats/{id}/edit', [StratController::class, 'edit'])->name('strats.edit');
-    Route::patch('/{map}/{agent}/strats/{id}/edit', [StratController::class, 'update'])->name('strats.update');
-    Route::delete('/{map}/{agent}/strats/{id}', [StratController::class, 'destroy'])->name('strats.destroy');
+    Route::get('/collection/{map}/{agent}/strats/{id}', [StratController::class, 'show'])->name('strats.show');
+    Route::get('/collection/{map}/{agent}/strats/{id}/edit', [StratController::class, 'edit'])->name('strats.edit');
+    Route::patch('/collection/{map}/{agent}/strats/{id}/edit', [StratController::class, 'update'])->name('strats.update');
+    Route::delete('/collection/{map}/{agent}/strats/{id}', [StratController::class, 'destroy'])->name('strats.destroy');
 });
 
 require __DIR__ . '/auth.php';
