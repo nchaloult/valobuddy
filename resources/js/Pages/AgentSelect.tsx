@@ -28,6 +28,7 @@ import skye from "@/../images/agents/skye.webp";
 import sova from "@/../images/agents/sova.webp";
 import viper from "@/../images/agents/viper.webp";
 import yoru from "@/../images/agents/yoru.webp";
+import Breadcrumbs from "@/Components/Breadcrumbs";
 
 type Agent = {
   name: string;
@@ -98,6 +99,10 @@ export default function AgentSelect({ auth, map }: PageProps & Props) {
   return (
     <div className="flex flex-col h-svh">
       <Header user={auth.user} />
+
+      <div className="p-4 bg-neutral-900">
+        <Breadcrumbs />
+      </div>
 
       <main className="flex grow justify-center items-center">
         <AgentSelector map={map} />

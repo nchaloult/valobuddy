@@ -1,3 +1,4 @@
+import Breadcrumbs from "@/Components/Breadcrumbs";
 import MarkdownEditor from "@/Components/MarkdownEditor";
 import { useForm } from "@inertiajs/react";
 
@@ -12,9 +13,8 @@ export default function CreateStratPage() {
     <div className="flex flex-col min-h-svh">
       <div className="grow">
         <header className="flex flex-col space-y-2 z-10 sticky top-0 p-4 w-full bg-neutral-900/95 shadow-lg shadow-neutral-200/5">
-          <span className="text-neutral-400 text-sm font-['Space_Mono'] scale-y-110 uppercase">
-            TODO: Breadcrumbs go here.
-          </span>
+          <Breadcrumbs map="foo" agent="bar" resourceType="strats" />
+
           <div className="flex space-x-2">
             <input
               type="text"

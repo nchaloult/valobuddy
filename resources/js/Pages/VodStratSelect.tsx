@@ -1,6 +1,7 @@
 import { PageProps } from "@/types";
 import Header from "@/Components/Header";
 import { Link } from "@inertiajs/react";
+import Breadcrumbs from "@/Components/Breadcrumbs";
 
 type Props = {
   map: string;
@@ -10,6 +11,10 @@ export default function AgentSelect({ auth, map, agent }: PageProps & Props) {
   return (
     <div className="flex flex-col h-svh">
       <Header user={auth.user} />
+
+      <div className="p-4 bg-neutral-900">
+        <Breadcrumbs map={map} />
+      </div>
 
       <main className="flex grow text-6xl font-['Druk_Wide_Bold']">
         <div className="w-full grid grid-cols-2">
