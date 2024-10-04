@@ -15,6 +15,8 @@ return new class extends Migration
         Schema::create('strats', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(User::class);
+            $table->string('map');
+            $table->string('agent');
             $table->string('title'); // TODO: Add a max length to this?
             $table->longText('attacker_side_notes')->nullable();
             $table->longText('attacker_side_notes_html')->nullable();
