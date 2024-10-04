@@ -208,14 +208,38 @@ export default function MarkdownEditor({
   initialContent,
   setContent,
 }: MarkdownEditorProps) {
-  async function uploadImage(file: File): Promise<string> {
-    // TODO: Hit a backend endpoint that you create to upload this image to
-    // Imgur, and get a public URL back.
-    //
-    // In the meantime, we're stubbing that functionality out here by returning
-    // the URL for a random image on the Internet.
+  async function uploadImage(file: File): Promise<{
+    publicUrl: string;
+    deleteHash: string;
+  }> {
+    const requestBody = new FormData();
+    requestBody.append("type", "image");
+    requestBody.append("title", "Image for strat in ValoBuddy");
+    requestBody.append("image", file);
 
-    return "https://i.imgur.com/46gZCE2.jpeg";
+    const response = await fetch("https://api.imgur.com/3/image", {
+      method: "POST",
+      headers: {
+        // TODO: Either store this client ID as a secure cookie on the client
+        // side, or perform this image-uploading work on the server side, and
+        // put this client ID in an environment variable.
+        //
+        // Technically, this client ID doesn't need to be kept a secret. It can
+        // still be abused, though. For instance, people could mass-upload
+        // images with this client ID, and Imgur would think we're the ones
+        // doing it. We'd have no way to prove that we weren't.
+        //
+        // This GitHub repo is public, so this client ID is out there and
+        // available to anyone who's scraping for these things. I'm kinda just
+        // shrugging my shoulders at that for now, honestly.
+        Authorization: "Client-ID 85608d9006f9d83",
+        Accept: "application/json",
+      },
+      body: requestBody,
+    });
+
+    const data: any = await response.json();
+    return { publicUrl: data.data.link, deleteHash: data.data.deletehash };
   }
 
   return (
@@ -256,7 +280,7 @@ export default function MarkdownEditor({
             img.src = _URL.createObjectURL(file);
             img.onload = function () {
               uploadImage(file)
-                .then((publicUrl) => {
+                .then(({ publicUrl, deleteHash }) => {
                   // Pre-load the image before responding so loading indicators
                   // can stay and swaps out smoothly when the image is ready.
                   let image = new Image();
@@ -278,6 +302,9 @@ export default function MarkdownEditor({
                     }
 
                     // Create the TipTap Image element/"node".
+                    //
+                    // TODO: Explore adding the deleteHash to this node as a
+                    // mark?
                     const node = schema.nodes.image.create({
                       src: publicUrl,
                     });
