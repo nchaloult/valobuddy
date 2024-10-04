@@ -53,6 +53,9 @@ export default {
                     "0%": { opacity: 0, transform: "translateY(1rem)" },
                     "100%": { opacity: 1, transform: "translateY(0)" },
                 },
+                shimmer: {
+                    "100%": { maskPosition: "left" },
+                },
                 hazardTapeMarquee: {
                     "0%": { transform: "translateX(-1.5rem)" },
                     // Weirdness to smooth out this animation.
@@ -68,6 +71,7 @@ export default {
                 "marquee-ltor-three": "marqueeLtorThree 25s linear infinite",
                 "fade-in": "fadeIn 200ms",
                 "rise-and-fade-in": "riseAndFadeIn 0.5s ease forwards",
+                shimmer: "shimmer 0.5s",
                 "hazard-tape-marquee": "hazardTapeMarquee 1s linear infinite",
             },
         },
