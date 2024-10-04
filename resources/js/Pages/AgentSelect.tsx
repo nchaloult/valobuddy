@@ -82,7 +82,7 @@ function AgentSelector({ map }: AgentSelectorProps) {
               // https://stackoverflow.com/a/68217932
               mask: "linear-gradient(-60deg, black 30%, #0008, black 70%) right/350% 100%",
             }}
-            className="hover:animate-[shimmer_0.5s]"
+            className="hover:animate-shimmer"
             draggable={false}
           />
         </Link>
