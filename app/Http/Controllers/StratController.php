@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Strat;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
@@ -18,10 +17,15 @@ class StratController extends Controller
     {
         // TODO: Validate the provided map and agent against a whitelist/enum.
 
-        // TODO: Only fetch strats for the provided map and agent.
+        // TODO: Is there a more idiomatic way to fetch strats for the provided
+        // map and agent?
         $strats = $request->user()
             ->strats()
             ->select(['id', 'title', 'num_images', 'created_at', 'updated_at'])
+            ->where([
+                ['map', $map],
+                ['agent', $agent]
+            ])
             ->orderBy('updated_at', 'desc')
             ->get();
 
