@@ -5,8 +5,8 @@ import { useForm } from "@inertiajs/react";
 import { PageProps, StratForEditing } from "@/types";
 import Breadcrumbs from "@/Components/Breadcrumbs";
 
-type Props = PageProps & { strat: StratForEditing };
-export default function EditStratPage({ strat }: Props) {
+type Props = PageProps & { map: string; agent: string; strat: StratForEditing };
+export default function EditStratPage({ map, agent, strat }: Props) {
   const { setData, patch, errors } = useForm<{
     title?: string;
     attacker_side_notes?: string;
@@ -23,6 +23,8 @@ export default function EditStratPage({ strat }: Props) {
       <div className="grow">
         {isDeleteConfirmationModalVisible ? (
           <DeleteConfirmationModal
+            map={map}
+            agent={agent}
             stratId={strat.id}
             stratTitle={strat.title}
             handleCancel={() => setIsDeleteConfirmationModalVisible(false)}
@@ -30,7 +32,7 @@ export default function EditStratPage({ strat }: Props) {
         ) : null}
 
         <header className="flex flex-col space-y-2 z-10 sticky top-0 p-4 w-full bg-neutral-900/95 shadow-lg shadow-neutral-200/5">
-          <Breadcrumbs map="foo" agent="bar" resourceType="strats" />
+          <Breadcrumbs map={map} agent={agent} resourceType="strats" />
 
           <div className="flex space-x-2">
             <input
@@ -47,8 +49,8 @@ export default function EditStratPage({ strat }: Props) {
               onClick={() =>
                 patch(
                   route("strats.update", {
-                    map: "foo",
-                    agent: "bar",
+                    map,
+                    agent,
                     id: strat.id,
                   })
                 )

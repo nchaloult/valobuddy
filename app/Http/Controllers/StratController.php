@@ -29,15 +29,22 @@ class StratController extends Controller
             ->orderBy('updated_at', 'desc')
             ->get();
 
-        return Inertia::render('Strats', ['strats' => $strats]);
+        return Inertia::render('Strats', [
+            'map' => $map,
+            'agent' => $agent,
+            'strats' => $strats,
+        ]);
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Request $request, string $map, string $agent)
     {
-        return Inertia::render('CreateStrat');
+        return Inertia::render('CreateStrat', [
+            'map' => $map,
+            'agent' => $agent,
+        ]);
     }
 
     /**
@@ -92,7 +99,11 @@ class StratController extends Controller
             ->where('id', $id)
             ->sole();
 
-        return Inertia::render('Strat', ['strat' => $strat]);
+        return Inertia::render('Strat', [
+            'map' => $map,
+            'agent' => $agent,
+            'strat' => $strat,
+        ]);
     }
 
     /**
@@ -116,7 +127,11 @@ class StratController extends Controller
             ->where('id', $id)
             ->sole();
 
-        return Inertia::render('EditStrat', ['strat' => $strat]);
+        return Inertia::render('EditStrat', [
+            'map' => $map,
+            'agent' => $agent,
+            'strat' => $strat,
+        ]);
     }
 
     /**

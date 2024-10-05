@@ -2,7 +2,8 @@ import Breadcrumbs from "@/Components/Breadcrumbs";
 import MarkdownEditor from "@/Components/MarkdownEditor";
 import { useForm } from "@inertiajs/react";
 
-export default function CreateStratPage() {
+type Props = { map: string; agent: string };
+export default function CreateStratPage({ map, agent }: Props) {
   const { setData, post, errors } = useForm<{
     title: string;
     attacker_side_notes?: string;
@@ -13,7 +14,7 @@ export default function CreateStratPage() {
     <div className="flex flex-col min-h-svh">
       <div className="grow">
         <header className="flex flex-col space-y-2 z-10 sticky top-0 p-4 w-full bg-neutral-900/95 shadow-lg shadow-neutral-200/5">
-          <Breadcrumbs map="foo" agent="bar" resourceType="strats" />
+          <Breadcrumbs map={map} agent={agent} resourceType="strats" />
 
           <div className="flex space-x-2">
             <input
@@ -29,8 +30,8 @@ export default function CreateStratPage() {
               onClick={() =>
                 post(
                   route("strats.store", {
-                    map: "foo",
-                    agent: "bar",
+                    map,
+                    agent,
                   })
                 )
               }

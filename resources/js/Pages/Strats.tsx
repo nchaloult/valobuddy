@@ -4,8 +4,12 @@ import CreateActionButton from "@/Components/CreateActionButton";
 import { PageProps, StratForViewing } from "@/types";
 import Breadcrumbs from "@/Components/Breadcrumbs";
 
-type Props = PageProps & { strats: StratForViewing[] };
-export default function StratsPage({ strats }: Props) {
+type Props = PageProps & {
+  map: string;
+  agent: string;
+  strats: StratForViewing[];
+};
+export default function StratsPage({ map, agent, strats }: Props) {
   const [filteredStrats, setFilteredStrats] = useState(strats);
 
   function updateFilteredStrats(query: string) {
@@ -18,10 +22,10 @@ export default function StratsPage({ strats }: Props) {
 
   return (
     <>
-      <CreateActionButton map="foo" agent="bar" />
+      <CreateActionButton map={map} agent={agent} />
 
       <header className="flex flex-col space-y-2 z-10 sticky top-0 p-4 w-full bg-neutral-900/95 shadow-lg shadow-neutral-200/5">
-        <Breadcrumbs map="foo" agent="bar" />
+        <Breadcrumbs map={map} agent={agent} />
 
         <h1 className="text-5xl font-['Druk_Wide_Bold']">STRATS</h1>
         <form className="flex space-x-2 [&>*]:text-sm font-['Space_Mono']">
@@ -46,8 +50,8 @@ export default function StratsPage({ strats }: Props) {
         {filteredStrats.map((strat) => (
           <Link
             href={route("strats.show", {
-              map: "foo",
-              agent: "bar",
+              map,
+              agent,
               id: strat.id,
             })}
             className="p-4 bg-neutral-800 text-white hover:bg-stone-700"

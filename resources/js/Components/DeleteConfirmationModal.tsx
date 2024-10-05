@@ -3,12 +3,16 @@ import { Link } from "@inertiajs/react";
 
 // TODO: Somehow reference from some shared type definition. Don't duplicate
 // type definitions all across the frontend.
-interface Props {
+type Props = {
+  map: string;
+  agent: string;
   stratId: number;
   stratTitle: string;
   handleCancel: () => void;
-}
+};
 export default function DeleteConfirmationModal({
+  map,
+  agent,
   stratId,
   stratTitle,
   handleCancel,
@@ -87,8 +91,8 @@ export default function DeleteConfirmationModal({
                 as="button"
                 type="button"
                 href={route("strats.destroy", {
-                  map: "foo",
-                  agent: "bar",
+                  map,
+                  agent,
                   id: stratId,
                 })}
                 method="delete"

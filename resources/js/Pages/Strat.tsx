@@ -2,12 +2,12 @@ import Breadcrumbs from "@/Components/Breadcrumbs";
 import { PageProps, StratForViewing } from "@/types";
 import { Link } from "@inertiajs/react";
 
-type Props = PageProps & { strat: StratForViewing };
-export default function StratPage({ strat }: Props) {
+type Props = PageProps & { map: string; agent: string; strat: StratForViewing };
+export default function StratPage({ map, agent, strat }: Props) {
   return (
     <>
       <header className="flex flex-col space-y-2 z-10 sticky top-0 p-4 w-full bg-neutral-900/95 shadow-lg shadow-neutral-200/5">
-        <Breadcrumbs map="foo" agent="bar" resourceType="strats" />
+        <Breadcrumbs map={map} agent={agent} resourceType="strats" />
 
         <div className="flex space-x-2">
           <h1 className="grow text-5xl font-['Druk_Wide_Bold'] uppercase truncate">
@@ -16,8 +16,8 @@ export default function StratPage({ strat }: Props) {
 
           <Link
             href={route("strats.edit", {
-              map: "foo",
-              agent: "bar",
+              map,
+              agent,
               id: strat.id,
             })}
             as="button"
