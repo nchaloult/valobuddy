@@ -76,6 +76,8 @@ class StratController extends Controller
 
         // TODO: Perform validation on the query parameters. Make sure the map
         // and the agent are in an enum, and that the ID is a positive integer.
+        // Perhaps also make sure that the strat with that ID is under the
+        // provided map and agent.
 
         $strat = $request->user()
             ->strats()
